@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>
+  자바스크립트 배열 메서드 정리 · It news
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="News reporter">
+<meta name="description" content="자바스크립트의 배열을 메서드를 정리해 봅니다.">
+<meta name="keywords" content="blog,developer,AI,it">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="자바스크립트 배열 메서드 정리">
+  <meta name="twitter:description" content="자바스크립트의 배열을 메서드를 정리해 봅니다.">
+
+<meta property="og:url" content="http://localhost:1313/posts/2020/2020-03-15-javascript-arrary/">
+  <meta property="og:site_name" content="It news">
+  <meta property="og:title" content="자바스크립트 배열 메서드 정리">
+  <meta property="og:description" content="자바스크립트의 배열을 메서드를 정리해 봅니다.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-03-15T21:39:55+09:00">
+    <meta property="article:modified_time" content="2020-03-15T21:39:55+09:00">
+    <meta property="article:tag" content="Javascript">
+    <meta property="article:tag" content="Array">
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/posts/2020/2020-03-15-javascript-arrary/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://localhost:1313/">
+      It news
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://localhost:1313/posts/2020/2020-03-15-javascript-arrary/">
+              자바스크립트 배열 메서드 정리
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2020-03-15T21:39:55&#43;09:00">
+                March 15, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/javascript/">Javascript</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/javascript/">Javascript</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/array/">Array</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>자바스크립트의 배열을 메서드를 정리해 봅니다.</p>
+<h2 id="array-추가삭제">
+  Array 추가/삭제
+  <a class="heading-link" href="#array-%ec%b6%94%ea%b0%80%ec%82%ad%ec%a0%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="arraypush">
+  Array.push()
+  <a class="heading-link" href="#arraypush">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열의 마지막 요소를 추가해 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">number_arr</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">number_arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number_arr</span><span class="p">);</span>  <span class="c1">// [ 1, 2, 3, 4, 5, 6 ]  
+</span></span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[1, 2, 3, 4, 5, 6]</p>
+</blockquote>
+<h3 id="arrayunshift">
+  Array.unshift()
+  <a class="heading-link" href="#arrayunshift">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열의 가장 첫번째 요소를 추가해 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">number_arr</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">number_arr</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number_arr</span><span class="p">);</span>  <span class="c1">// [ 6, 1, 2, 3, 4, 5 ]  
+</span></span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[6, 1, 2, 3, 4, 5]</p>
+</blockquote>
+<h3 id="arraypop">
+  Array.pop()
+  <a class="heading-link" href="#arraypop">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열의 가장 마지막 요소를 삭제 합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">number_arr</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">pop</span> <span class="o">=</span> <span class="nx">number_arr</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number_arr</span><span class="p">);</span>  <span class="c1">// [ 1, 2, 3, 4 ]  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pop</span><span class="p">);</span>  <span class="c1">// 5  
+</span></span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[1, 2, 3, 4]<br>
+5</p>
+</blockquote>
+<h3 id="arrayshift">
+  Array.shift()
+  <a class="heading-link" href="#arrayshift">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열에서 가장 첫번째 요소를 삭제합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">number_arr</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">shift</span> <span class="o">=</span> <span class="nx">number_arr</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number_arr</span><span class="p">);</span>  <span class="c1">// [ 2, 3, 4, 5 ]  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shift</span><span class="p">);</span>  <span class="c1">// 1  
+</span></span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[2, 3, 4, 5]<br>
+1</p>
+</blockquote>
+<h3 id="arrayslice">
+  Array.slice()
+  <a class="heading-link" href="#arrayslice">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>기존 배열은 변하지 않고, 해당 요소를 반환 합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">number_arr</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="c1">// Syntax : Array.slice(시작위치, 끝위치)  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">sp</span> <span class="o">=</span> <span class="nx">number_arr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>  <span class="c1">// 2번째 부터 3번째 까지 반환합니다. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number_arr</span><span class="p">);</span>  <span class="c1">// [1, 2, 3, 4, 5] 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sp</span><span class="p">);</span>  <span class="c1">// [2, 3] 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">sp</span> <span class="o">=</span> <span class="nx">number_arr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sp</span><span class="p">);</span>  <span class="c1">// [3, 4, 5] 
+</span></span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[1, 2, 3, 4, 5]<br>
+[2, 3]<br>
+[3, 4, 5]</p>
+</blockquote>
+<h3 id="arraysplice">
+  Array.splice()
+  <a class="heading-link" href="#arraysplice">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>지정한 위치의 배열을 삭제 합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">number_arr</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="c1">// Syntax : Array.splice(시작위치, 삭제할갯수, 추가_할_아이템...)  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">sp</span> <span class="o">=</span> <span class="nx">number_arr</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>  <span class="c1">// 2번째 요소부터 2개를 삭제 합니다.  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number_arr</span><span class="p">);</span>  <span class="c1">// [ 1, 4, 5 ]  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sp</span><span class="p">);</span>  <span class="c1">// [2, 3]  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">sp2</span> <span class="o">=</span> <span class="nx">number_arr</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span> <span class="c1">// 2번재 요소 위치에 0개를 지우고 7,8,9를 추가해 줍니다.  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number_arr</span><span class="p">);</span> <span class="c1">// [1, 7, 8, 9, 4, 5]  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sp2</span><span class="p">);</span> <span class="c1">// undefined : 0개를 삭제해서 값이 없습니다.  
+</span></span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[1, 4, 5]<br>
+[2, 3]<br>
+[1, 7, 8, 9, 4, 5]<br>
+[]</p>
+</blockquote>
+<h3 id="arrayconcat">
+  Array.concat()
+  <a class="heading-link" href="#arrayconcat">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열을 합쳐 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">num1</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">num2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">combine</span> <span class="o">=</span> <span class="nx">num1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">num2</span><span class="p">);</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">combine</span><span class="p">);</span> <span class="c1">// [1, 2, 3, 4, 5, 6]  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">num3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">combine</span> <span class="o">=</span> <span class="nx">num1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">num2</span><span class="p">,</span> <span class="nx">num3</span><span class="p">);</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">combine</span><span class="p">);</span> <span class="c1">// [1, 2, 3, 4, 5, 6, 7, 8, 9]  
+</span></span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[1, 2, 3, 4, 5, 6]<br>
+[1, 2, 3, 4, 5, 6, 7, 8, 9]</p>
+</blockquote>
+<h3 id="arrayof">
+  Array.of()
+  <a class="heading-link" href="#arrayof">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>함수의 인수로 새 인스터스 배열을 만들어 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">ar</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ar</span><span class="p">);</span> <span class="c1">// [1, 2, 3]  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">ch</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="s2">&#34;짜장&#34;</span><span class="p">,</span> <span class="s2">&#34;짬뽕&#34;</span><span class="p">);</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ch</span><span class="p">);</span> <span class="c1">// [&#34;짜장&#34;, &#34;짬뽕&#34;]  
+</span></span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[1, 2, 3]<br>
+[ &ldquo;짜장&rdquo;, &ldquo;짬뽕&rdquo;]</p>
+</blockquote>
+<h2 id="array-반복">
+  Array 반복
+  <a class="heading-link" href="#array-%eb%b0%98%eb%b3%b5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="arrayforeach">
+  Array.forEach()
+  <a class="heading-link" href="#arrayforeach">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열의 요소를 순차적으로 반복해 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">vl</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">vl</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span> <span class="c1">// one, two, three를 차례대로 출력  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">})</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>one<br>
+two<br>
+three</p>
+</blockquote>
+<p>2번째 인자는 요소의 인덱스를 돌려 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">vl</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">vl</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">e</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>  
+</span></span><span class="line"><span class="cl"><span class="p">})</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>one 0<br>
+two 1<br>
+three 2</p>
+</blockquote>
+<h3 id="arrayvalues">
+  Array.values()
+  <a class="heading-link" href="#arrayvalues">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열의 요소를 새로운 반복형 객체로 만들어 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">vl</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">iterator</span> <span class="o">=</span> <span class="nx">vl</span><span class="p">.</span><span class="nx">values</span><span class="p">();</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">);</span>  <span class="c1">// one  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">);</span>  <span class="c1">// two  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">);</span>  <span class="c1">// three  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">);</span>  <span class="c1">// undefined  
+</span></span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>one<br>
+two<br>
+three<br>
+undefined</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">vl</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">iterator</span> <span class="o">=</span> <span class="nx">vl</span><span class="p">.</span><span class="nx">values</span><span class="p">();</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="k">of</span> <span class="nx">iterator</span><span class="p">)</span> <span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>  
+</span></span><span class="line"><span class="cl"><span class="p">}</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">);</span>  <span class="c1">// undefined : 위에서 모두 반복해서 없음.  
+</span></span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>one<br>
+two<br>
+three</p>
+</blockquote>
+<h3 id="arrayentries">
+  Array.entries()
+  <a class="heading-link" href="#arrayentries">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열의 요소를 키(key)와 값(value)로 짝지어진 반복형 객체로 만들어 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">vl</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span> <span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">iterator</span> <span class="o">=</span> <span class="nx">vl</span><span class="p">.</span><span class="nx">values</span><span class="p">();</span>  
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="k">of</span> <span class="nx">iterator</span><span class="p">)</span> <span class="p">{</span>  
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>  
+</span></span><span class="line"><span class="cl"><span class="p">}</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[0, &quot;one&quot;]<br>
+[1, &quot;two&quot;]<br>
+[2, &quot;three&quot;]</p>
+</blockquote>
+<h2 id="array-찾기">
+  Array 찾기
+  <a class="heading-link" href="#array-%ec%b0%be%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="arraysome">
+  Array.some()
+  <a class="heading-link" href="#arraysome">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열중에서 요소가 조건식에 맞는게 1개라도 있으면 true를 반환합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">some</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">));</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">some</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">));</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>true<br>
+false</p>
+</blockquote>
+<h3 id="arrayevery">
+  Array.every()
+  <a class="heading-link" href="#arrayevery">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열의 요소가 모두 조건식에 맞아야 true를 반환합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">every</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">));</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">every</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">));</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>true<br>
+false</p>
+</blockquote>
+<h3 id="arrayfind">
+  Array.find()
+  <a class="heading-link" href="#arrayfind">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열에서 조건식에 맞는 첫번째 요소를 반환합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">find</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">));</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">find</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">));</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>2<br>
+5</p>
+</blockquote>
+<p>2번째 값은 배열의 index, 3번째는 현재 배열을 입니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">find</span><span class="p">((</span><span class="nx">e</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&gt;</span> <span class="mi">3</span>  <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">));</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>5</p>
+</blockquote>
+<h3 id="arrayfindindex">
+  Array.findIndex()
+  <a class="heading-link" href="#arrayfindindex">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열에서 조건식에 맞는 첫번째 요소의 인덱스를 반환합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">findIndex</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">));</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">findIndex</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">));</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>0<br>
+1</p>
+</blockquote>
+<h3 id="arrayfilter">
+  Array.filter()
+  <a class="heading-link" href="#arrayfilter">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열에서 조건식에 맞는 요소들을 배열로 반환합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">filter</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">));</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">filter</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">e</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">));</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[ 2, 5, 8, 1, 4 ]<br>
+[ 5, 8 ]</p>
+</blockquote>
+<h3 id="arrayindexof">
+  Array.indexOf()
+  <a class="heading-link" href="#arrayindexof">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열에서 요소의 위치를 찾는다. 찾을수가 없으면 -1을 반환합니다.</p>
+<p>두번째 값을 찾을 시작 위치 입니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="mi">8</span><span class="p">));</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>0<br>
+2<br>
+3</p>
+</blockquote>
+<h2 id="array-변환하기">
+  Array 변환하기
+  <a class="heading-link" href="#array-%eb%b3%80%ed%99%98%ed%95%98%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="arrayfill">
+  Array.fill()
+  <a class="heading-link" href="#arrayfill">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>배열을 요소를 채워 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">arr</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span> <span class="c1">// 모두 7로 채워 넣는다.  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[ 7, 7, 7, 7 ]</p>
+</blockquote>
+<p>시작 지점을 정해서 채워 줄 수 있습니다. 시작 위치는 원하는 위치의 -1을 해서 넣어 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">arr</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 2번째 부터 끝까지 7로 채움, 0부터 시작이다.  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[ 1, 7, 7, 7 ]</p>
+</blockquote>
+<p>시작과 끝 지점을 지정해서 채워 줄 수 있습니다. 끝 지점은 위치를 넣어 줘야 합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">arr</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// 2번째 부터 3번째 까지 7로 채움  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>  
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[ 1, 7, 7, 4 ]</p>
+</blockquote>
+<h3 id="arraycopywithin">
+  Array.copyWithin()
+  <a class="heading-link" href="#arraycopywithin">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>지정한 위치에 값을 복사해서 넣어 줍니다.</p>
+<p>첫번째는 복사할 위치, 두번째는 시작위치 (기본값:0), 세번째는 끝위치(기본값:  array.length)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">];</span>   
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">array</span><span class="p">.</span><span class="nx">copyWithin</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>   
+</span></span></code></pre></div><p><strong>Output :</strong></p>
+<blockquote>
+<p>[ 1, 4, 5, 4, 5, 6, 7 ]</p>
+</blockquote>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2025
+     News reporter 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.js"></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

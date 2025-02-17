@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>
+  VSCode에 live2d 사용하기 · It news
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="News reporter">
+<meta name="description" content="먼저 띄운 화면을 보고 가시죠~">
+<meta name="keywords" content="blog,developer,AI,it">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="VSCode에 live2d 사용하기">
+  <meta name="twitter:description" content="먼저 띄운 화면을 보고 가시죠~">
+
+<meta property="og:url" content="http://localhost:1313/posts/2019/2019-01-22-vscode-live2d/">
+  <meta property="og:site_name" content="It news">
+  <meta property="og:title" content="VSCode에 live2d 사용하기">
+  <meta property="og:description" content="먼저 띄운 화면을 보고 가시죠~">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-01-22T23:42:22+09:00">
+    <meta property="article:modified_time" content="2019-01-22T23:42:22+09:00">
+    <meta property="article:tag" content="Vscode">
+    <meta property="article:tag" content="Live2d">
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/posts/2019/2019-01-22-vscode-live2d/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://localhost:1313/">
+      It news
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://localhost:1313/posts/2019/2019-01-22-vscode-live2d/">
+              VSCode에 live2d 사용하기
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2019-01-22T23:42:22&#43;09:00">
+                January 22, 2019
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              One-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/utillity/">Utillity</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/vscode/">Vscode</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/live2d/">Live2d</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>먼저 띄운 화면을 보고 가시죠~</p>
+<p>캐릭터 얼굴이 마우스 움직이는 방향으로 움직입니다.</p>
+<p>너무 귀엽죠?</p>
+<p><img alt="sample" src="https://github.com/summerscar/vscode-live2d/raw/master/screenshot/test.gif"></p>
+<p>그러면, 설치를 해 볼까요?</p>
+<p>먼저, 확장프로그램에서 live2d를 검색해서 설치해 줍니다.</p>
+<p>그리고 재실행을 해주시면, 아무것도 안 나옵니다. -_-;</p>
+<p><img alt="live2d" src="/img/2019-01-23-vscode-live2d/vscode-live2d-01.png"></p>
+<p><code>F1</code> 또는 <code>Ctrl+Shit+P</code>을 누르고 <code>live2d install</code>을 해 줍니다. 그리고 다시 VSCode를 실행 해 줍니다.</p>
+<p>그러면, 고양이가 왼쪽 하단에 나옵니다.</p>
+<p><img alt="live2d-3" src="/img/2019-01-23-vscode-live2d/vscode-live2d-02.png"></p>
+<p>그리고, 나오는 경고&hellip; 살포시 무시하기 위해서 고양이를 살짝 옮기시고, 기어 버튼을 누릅니다.</p>
+<p><img alt="live-2d" src="/img/2019-01-23-vscode-live2d/vscode-live2d-03.png"></p>
+<p>그리고 그만볼래(<code>Don't Show Again</code>)을 눌러 줍니다.</p>
+<p>우리는 고양이에 만족 할 순 없으니.. 다른 캐릭터를 찾아 봅니다.</p>
+<p><a href="https://github.com/summerscar/live2dDemo"  class="external-link" target="_blank" rel="noopener">https://github.com/summerscar/live2dDemo</a></p>
+<p>위 주소를 이동해서 쭈욱 보시면서 캐릭터를 선택 해 주시면 됩니다.</p>
+<p>그리고, 그 캐릭터는 아래 주소에서 테스트 해 보시면 됩니다.</p>
+<p><a href="http://summerscar.me/live2dDemo/"  class="external-link" target="_blank" rel="noopener">http://summerscar.me/live2dDemo/</a></p>
+<p><img alt="test" src="https://github.com/summerscar/live2dDemo/blob/master/screenshot/42.jpg?raw=true"></p>
+<p>전 위에 캐릭터를 이용해서 표시를 했습니다.</p>
+<p>설정하는 방법은 약간 귀찮습니다.</p>
+<p><code>File &gt; Preferences &gt; Settings</code>를 선택 하거나 <code>Ctrl+,</code>으로 설정 화면을 들어 갑니다.</p>
+<p>Live2d를 검색 하시거나 직접 입력을 하시거나, 좌측 상단에 <code>{}</code>버튼을 누르셔서 코드를 넣어 주시면 됩니다.</p>
+<p>저 같은 경우는 위 기본 값에서 사이즈를 반으로 줄여서 넣어 봤습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;live2d.width&#34;</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;live2d.height&#34;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;live2d.model&#34;</span><span class="p">:</span> <span class="s2">&#34;33.2017.newyear&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;live2d.headPos&#34;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;live2d.scale&#34;</span><span class="p">:</span> <span class="mi">1</span>   
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>하지만, 수정한다고 해서 바로 적용 되지 않습니다.</p>
+<p><code>F1</code> 또는 <code>Ctrl+Shit+P</code>을 다시 누르고 <code>live2d uninstall</code>을 하고 다시 <code>live2d install</code>을 해 줘야 합니다.</p>
+<p>꼭!!! 지웠다가 다시 설치를 해야 적용이 됩니다.</p>
+<p>결과는 아래와 같습니다.</p>
+<p><img alt="적용 화면" src="/img/2019-01-23-vscode-live2d/vscode-live2d-04.png"></p>
+<p>참.. 이쁘죠? ㅎㅎㅎ</p>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2025
+     News reporter 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.js"></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

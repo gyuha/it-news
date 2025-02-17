@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tslint on It news</title>
+    <link>http://localhost:1313/tags/tslint/</link>
+    <description>Recent content in Tslint on It news</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 19 Apr 2020 03:50:46 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/tslint/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vscode에서 vue 프로젝트 생성시 ESlint와 Prettier 설정해 주기</title>
+      <link>http://localhost:1313/posts/2020/2020-04-19-vue-typescript-eslint/</link>
+      <pubDate>Sun, 19 Apr 2020 03:50:46 +0900</pubDate>
+      <guid>http://localhost:1313/posts/2020/2020-04-19-vue-typescript-eslint/</guid>
+      <description>&lt;h2 id=&#34;vue-프로젝트-생성하기&#34;&gt;&#xD;&#xA;  Vue 프로젝트 생성하기&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#vue-%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8-%ec%83%9d%ec%84%b1%ed%95%98%ea%b8%b0&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;&lt;img alt=&#34;vscode-vue&#34; src=&#34;http://localhost:1313/img/2020-04-19-vue-typescript-eslint/vscode-vue.jpg&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;기존에 사용하던 &lt;a href=&#34;https://www.npmjs.com/package/tslint&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TSLint가 더이상 지원&lt;/a&gt;을 받지 못 하게 되면서, ESlint로 넘어가야 상태가 되었습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
