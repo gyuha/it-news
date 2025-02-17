@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://it-news.gyuha.com/</loc>
-    <lastmod>2025-01-20T13:38:56+09:00</lastmod>
-  </url><url>
-    <loc>https://it-news.gyuha.com/posts/</loc>
-    <lastmod>2025-01-20T13:38:56+09:00</lastmod>
-  </url><url>
-    <loc>https://it-news.gyuha.com/authors/</loc>
-  </url><url>
-    <loc>https://it-news.gyuha.com/categories/</loc>
-  </url><url>
-    <loc>https://it-news.gyuha.com/series/</loc>
-  </url><url>
-    <loc>https://it-news.gyuha.com/tags/</loc>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>https://it-news.gyuha.com/en/sitemap.xml</loc>
+    
+      <lastmod>2025-01-20T13:38:56+09:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://it-news.gyuha.com/pt-br/sitemap.xml</loc>
+    
+  </sitemap>
+  
+</sitemapindex>
