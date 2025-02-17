@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>
+  Visual Studio Code 확장 팩 만들기 · It news
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="News reporter">
+<meta name="description" content="Visual Studio Code(VSCode)는 다양한 확장을 지원하여 생산성을 높이고 개발 워크플로우를 간소화하는 강력한 코드 편집기입니다. 함께 잘 작동하는 확장 모음을 가지고 있다면, 확장 팩을 만들어 사용자가 이를 쉽게 설치하고 관리할 수 있도록 할 수 있습니다.">
+<meta name="keywords" content="blog,developer,AI,it">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Visual Studio Code 확장 팩 만들기">
+  <meta name="twitter:description" content="Visual Studio Code(VSCode)는 다양한 확장을 지원하여 생산성을 높이고 개발 워크플로우를 간소화하는 강력한 코드 편집기입니다. 함께 잘 작동하는 확장 모음을 가지고 있다면, 확장 팩을 만들어 사용자가 이를 쉽게 설치하고 관리할 수 있도록 할 수 있습니다.">
+
+<meta property="og:url" content="http://localhost:1313/posts/2025/2025-01-20_vscode-extention-pack/">
+  <meta property="og:site_name" content="It news">
+  <meta property="og:title" content="Visual Studio Code 확장 팩 만들기">
+  <meta property="og:description" content="Visual Studio Code(VSCode)는 다양한 확장을 지원하여 생산성을 높이고 개발 워크플로우를 간소화하는 강력한 코드 편집기입니다. 함께 잘 작동하는 확장 모음을 가지고 있다면, 확장 팩을 만들어 사용자가 이를 쉽게 설치하고 관리할 수 있도록 할 수 있습니다.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-20T13:38:56+09:00">
+    <meta property="article:modified_time" content="2025-01-20T13:38:56+09:00">
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/posts/2025/2025-01-20_vscode-extention-pack/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://localhost:1313/">
+      It news
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://localhost:1313/posts/2025/2025-01-20_vscode-extention-pack/">
+              Visual Studio Code 확장 팩 만들기
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-01-20T13:38:56&#43;09:00">
+                January 20, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>Visual Studio Code(VSCode)는 다양한 확장을 지원하여 생산성을 높이고 개발 워크플로우를 간소화하는 강력한 코드 편집기입니다. 함께 잘 작동하는 확장 모음을 가지고 있다면, 확장 팩을 만들어 사용자가 이를 쉽게 설치하고 관리할 수 있도록 할 수 있습니다.</p>
+<p>이번 포스트에서는 자신만의 VSCode 확장 팩을 만드는 방법을 단계별로 안내하겠습니다.</p>
+<h2 id="1단계-환경-설정">
+  1단계: 환경 설정
+  <a class="heading-link" href="#1%eb%8b%a8%ea%b3%84-%ed%99%98%ea%b2%bd-%ec%84%a4%ec%a0%95">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>확장 팩을 만들기 전에 다음 도구들이 설치되어 있는지 확인하세요:</p>
+<ol>
+<li>
+<p><strong>Node.js</strong>: <a href="https://nodejs.org/"  class="external-link" target="_blank" rel="noopener">nodejs.org</a>에서 Node.js를 다운로드하고 설치합니다.</p>
+</li>
+<li>
+<p><strong>Visual Studio Code</strong>: 아직 설치하지 않았다면 <a href="https://code.visualstudio.com/"  class="external-link" target="_blank" rel="noopener">code.visualstudio.com</a>에서 VSCode를 다운로드합니다.</p>
+</li>
+<li>
+<p><strong>Yeoman 및 VSCode 확장 생성기</strong>: 터미널을 열고 다음 명령어를 실행하여 Yeoman과 생성기를 설치합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install -g yo generator-code
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="2단계-확장-팩-생성">
+  2단계: 확장 팩 생성
+  <a class="heading-link" href="#2%eb%8b%a8%ea%b3%84-%ed%99%95%ec%9e%a5-%ed%8c%a9-%ec%83%9d%ec%84%b1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>환경 설정이 완료되었으니 이제 확장 팩을 생성해 보겠습니다:</p>
+<ol>
+<li>
+<p><strong>새 확장 팩 생성</strong>: 터미널에서 다음 명령어를 실행합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yo code
+</span></span></code></pre></div><ul>
+<li>프롬프트가 나타나면 <strong>New Extension Pack</strong>을 선택합니다.</li>
+<li>확장 팩의 이름, 설명 및 기타 세부 정보를 입력합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>package.json</code> 수정</strong>: 생성기가 완료되면 확장 팩의 디렉토리로 이동하여 <code>package.json</code> 파일을 엽니다. 다음과 유사한 구조를 볼 수 있습니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;your-extension-pack-name&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;displayName&#34;</span><span class="p">:</span> <span class="s2">&#34;Your Extension Pack&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;A pack of useful extensions.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;publisher&#34;</span><span class="p">:</span> <span class="s2">&#34;your-publisher-name&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;engines&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;vscode&#34;</span><span class="p">:</span> <span class="s2">&#34;^1.60.0&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;extensionPack&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;publisher.extension1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;publisher.extension2&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;activationEvents&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;./out/extension.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;contributes&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;commands&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;configuration&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ul>
+<li><strong><code>extensionPack</code></strong>: 여기에서 포함할 확장의 식별자를 추가합니다. 형식은 <code>publisher.extensionName</code>입니다.</li>
+</ul>
+</li>
+</ol>
+<h2 id="3단계-확장-팩-테스트">
+  3단계: 확장 팩 테스트
+  <a class="heading-link" href="#3%eb%8b%a8%ea%b3%84-%ed%99%95%ec%9e%a5-%ed%8c%a9-%ed%85%8c%ec%8a%a4%ed%8a%b8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ol>
+<li><strong>VSCode에서 확장 팩 열기</strong>: VSCode에서 확장 팩이 포함된 폴더를 엽니다.</li>
+<li><strong>확장 실행</strong>: <code>F5</code> 키를 눌러 확장 팩이 로드된 새로운 VSCode 창을 시작합니다. 이를 통해 기능을 테스트하고 포함된 모든 확장이 인식되는지 확인할 수 있습니다.</li>
+</ol>
+<h2 id="4단계-확장-팩-게시">
+  4단계: 확장 팩 게시
+  <a class="heading-link" href="#4%eb%8b%a8%ea%b3%84-%ed%99%95%ec%9e%a5-%ed%8c%a9-%ea%b2%8c%ec%8b%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>확장 팩에 만족하면 이제 게시할 차례입니다:</p>
+<ol>
+<li>
+<p><strong>VSCE 도구 설치</strong>: 아직 설치하지 않았다면, 확장을 패키징하고 게시하기 위한 VSCE 도구를 설치합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install -g @vscode/vsce
+</span></span></code></pre></div></li>
+<li>
+<p><strong>확장 패키지 만들기</strong>: 터미널에서 다음 명령어를 실행합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vsce package
+</span></span></code></pre></div><p>이 명령어는 디렉토리에 <code>.vsix</code> 파일을 생성합니다.</p>
+</li>
+<li>
+<p><strong>확장 팩 게시</strong>: 확장 팩을 게시하려면 <a href="https://marketplace.visualstudio.com/"  class="external-link" target="_blank" rel="noopener">Visual Studio Marketplace</a>에서 게시자 계정을 생성해야 합니다. 게시 지침에 따라 다음 명령어를 사용하여 확장 팩을 게시합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vsce publish
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="추가-팁">
+  추가 팁
+  <a class="heading-link" href="#%ec%b6%94%ea%b0%80-%ed%8c%81">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><strong>문서화</strong>: 확장 팩에 대한 명확한 문서를 제공하여 설치 및 사용 방법을 안내합니다.</li>
+<li><strong>버전 관리</strong>: <code>package.json</code> 파일에서 버전 관리를 통해 업데이트를 효과적으로 관리합니다.</li>
+<li><strong>테스트</strong>: 모든 포함된 확장이 예상대로 작동하는지 철저히 테스트합니다.</li>
+</ul>
+<h2 id="결론">
+  결론
+  <a class="heading-link" href="#%ea%b2%b0%eb%a1%a0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>VSCode 확장 팩을 만드는 것은 관련 확장을 묶어 사용자 경험을 향상시키는 좋은 방법입니다. 이 포스트에서 설명한 단계를 따르면 쉽게 자신만의 확장 팩을 생성하고 테스트하며 게시할 수 있습니다. 즐거운 코딩 되세요!</p>
+<hr>
+<p>필요에 따라 내용을 수정하거나 개인적인 통찰을 추가하여 더 매력적으로 만들 수 있습니다! 추가적인 도움이 필요하시면 언제든지 말씀해 주세요.</p>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2025
+     News reporter 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.js"></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

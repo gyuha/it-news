@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>
+  Spring Boot에서 자주 사용되는 애노테이션 · It news
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="News reporter">
+<meta name="description" content="이 문서는 Spring Boot 애플리케이션에서 자주 사용되는 애노테이션의 목록입니다.">
+<meta name="keywords" content="blog,developer,AI,it">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spring Boot에서 자주 사용되는 애노테이션">
+  <meta name="twitter:description" content="이 문서는 Spring Boot 애플리케이션에서 자주 사용되는 애노테이션의 목록입니다.">
+
+<meta property="og:url" content="http://localhost:1313/posts/2024/2024-12-18_list_of_useful_annotation_in_spring_boot/">
+  <meta property="og:site_name" content="It news">
+  <meta property="og:title" content="Spring Boot에서 자주 사용되는 애노테이션">
+  <meta property="og:description" content="이 문서는 Spring Boot 애플리케이션에서 자주 사용되는 애노테이션의 목록입니다.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-18T10:04:00+09:00">
+    <meta property="article:modified_time" content="2024-12-18T10:04:00+09:00">
+    <meta property="article:tag" content="Annotation">
+    <meta property="article:tag" content="Spring">
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/posts/2024/2024-12-18_list_of_useful_annotation_in_spring_boot/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://localhost:1313/">
+      It news
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://localhost:1313/posts/2024/2024-12-18_list_of_useful_annotation_in_spring_boot/">
+              Spring Boot에서 자주 사용되는 애노테이션
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2024-12-18T10:04:00&#43;09:00">
+                December 18, 2024
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/spring/">Spring</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/annotation/">Annotation</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/spring/">Spring</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>이 문서는 Spring Boot 애플리케이션에서 자주 사용되는 애노테이션의 목록입니다.</p>
+<p>자세하고 포괄적인 정보는 공식 Javadocs 및 문서를 참조하십시오.</p>
+<h2 id="핵심-스프링">
+  핵심 스프링
+  <a class="heading-link" href="#%ed%95%b5%ec%8b%ac-%ec%8a%a4%ed%94%84%eb%a7%81">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Bean.html"  class="external-link" target="_blank" rel="noopener">@Bean</a> - 애노테이션이 붙은 메서드는 Spring IoC 컨테이너에 의해 관리되는 빈을 생성합니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Primary.html"  class="external-link" target="_blank" rel="noopener">@Primary</a> - 후보가 여러 개인 경우 Bean에 우선권을 부여해야 함을 나타냅니다. 단일 값 종속성을 autowire할 수 있습니다.</li>
+<li>스테레오타입 애노테이션
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/stereotype/Component.html"  class="external-link" target="_blank" rel="noopener">@Component</a> - 애노테이션이 붙은 클래스를 컴포넌트 스캐닝에 의해 발견되고 애플리케이션 컨텍스트에 로드되는 빈으로 표시합니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/stereotype/Controller.html"  class="external-link" target="_blank" rel="noopener">@Controller</a> - 애노테이션이 붙은 클래스를 Spring MVC의 요청 핸들러를 포함하는 빈으로 표시합니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html"  class="external-link" target="_blank" rel="noopener">@RestController</a> - 애노테이션이 붙은 클래스를 <code>@Controller</code> 빈으로 표시하고 반환된 결과를 메시지로 직렬화하기 위해 <code>@ResponseBody</code>를 추가합니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Configuration.html"  class="external-link" target="_blank" rel="noopener">@Configuration</a> - 애노테이션이 붙은 클래스를 자바 설정으로 표시하여 빈을 정의합니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/stereotype/Service.html"  class="external-link" target="_blank" rel="noopener">@Service</a> - 애노테이션이 붙은 클래스를 빈으로 표시합니다(관례상 비즈니스 로직을 포함하는 경우가 많습니다).</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/stereotype/Repository.html"  class="external-link" target="_blank" rel="noopener">@Repository</a> - 애노테이션이 붙은 클래스를 빈으로 표시하고(관례상 데이터 접근을 제공하는 경우가 많습니다) <code>SQLException</code>을 <code>DataAccessExceptions</code>로 자동 변환합니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="빈-상태">
+  빈 상태
+  <a class="heading-link" href="#%eb%b9%88-%ec%83%81%ed%83%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/annotation/PostConstruct.html"  class="external-link" target="_blank" rel="noopener">@PostConstruct</a> - 의존성 주입이 완료된 후 초기화를 수행하기 위해 애노테이션이 붙은 메서드를 실행합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/annotation/PreDestroy.html"  class="external-link" target="_blank" rel="noopener">@PreDestroy</a> - 빈이 파괴되기 전에 애노테이션이 붙은 메서드를 실행합니다(예: 종료 시).</li>
+</ul>
+<h3 id="설정">
+  설정
+  <a class="heading-link" href="#%ec%84%a4%ec%a0%95">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Import.html"  class="external-link" target="_blank" rel="noopener">@Import</a> - 하나 이상의 자바 설정 클래스 <code>@Configuration</code>를 가져옵니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/PropertySource.html"  class="external-link" target="_blank" rel="noopener">@PropertySource</a> - <code>application.properties</code> 파일의 위치를 지정하여 키-값 쌍을 Spring <code>Environment</code>에 추가합니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Value.html"  class="external-link" target="_blank" rel="noopener">@Value</a> - 애노테이션이 붙은 필드와 매개변수 값이 주입됩니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/ComponentScan.html"  class="external-link" target="_blank" rel="noopener">@ComponentScan</a> - 컴포넌트 스캐닝을 구성합니다(<code>@Component</code>, <code>@Service</code> 등).</li>
+</ul>
+<h3 id="빈-속성">
+  빈 속성
+  <a class="heading-link" href="#%eb%b9%88-%ec%86%8d%ec%84%b1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Lazy.html"  class="external-link" target="_blank" rel="noopener">@Lazy</a> - 애노테이션이 붙은 빈은 첫 사용 시 지연 초기화됩니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Profile.html"  class="external-link" target="_blank" rel="noopener">@Profile</a> - 정의된 프로필이 활성화된 경우에만 빈이 초기화됩니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Scope.html"  class="external-link" target="_blank" rel="noopener">@Scope</a> - 빈 생성 범위를 정의합니다(예: 프로토타입, 싱글톤 등).</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/DependsOn.html"  class="external-link" target="_blank" rel="noopener">@DependsOn</a> - 생성 순서 측면에서 다른 빈에 대한 종속성을 명시적으로 정의합니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/annotation/Order.html"  class="external-link" target="_blank" rel="noopener">@Order</a> - 빈 목록을 주입할 때 정렬 순서를 정의하지만 단일 빈이 예상되는 경우 우선순위를 해결하지는 않습니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Primary.html"  class="external-link" target="_blank" rel="noopener">@Primary</a> - 여러 빈을 자동 주입할 수 있는 경우 애노테이션이 붙은 빈이 선택됩니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Conditional.html"  class="external-link" target="_blank" rel="noopener">@Conditional</a> - 조건이 만족되는 경우에만 애노테이션이 붙은 빈이 생성됩니다.
+<ul>
+<li>Spring Boot에서 추가로 사용 가능:
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/condition/ConditionalOnBean.html"  class="external-link" target="_blank" rel="noopener">@ConditionalOnBean</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/condition/ConditionalOnMissingBean.html"  class="external-link" target="_blank" rel="noopener">@ConditionalOnMissingBean</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/condition/ConditionalOnClass.html"  class="external-link" target="_blank" rel="noopener">@ConditionalOnClass</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/condition/ConditionalOnMissingClass.html"  class="external-link" target="_blank" rel="noopener">@ConditionalOnMissingClass</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/condition/ConditionalOnProperty.html"  class="external-link" target="_blank" rel="noopener">@ConditionalOnProperty</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/condition/ConditionalOnProperty.html"  class="external-link" target="_blank" rel="noopener">@ConditionalOnMissingProperty</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="빈-주입">
+  빈 주입
+  <a class="heading-link" href="#%eb%b9%88-%ec%a3%bc%ec%9e%85">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Autowired.html"  class="external-link" target="_blank" rel="noopener">@Autowired</a> - 빈이 애노테이션이 붙은 세터, 필드 또는 생성자 매개변수에 주입됩니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Qualifier.html"  class="external-link" target="_blank" rel="noopener">@Qualifier</a> - 자동 주입 후보를 식별하기 위한 추가 조건으로 빈의 이름을 지정합니다.</li>
+</ul>
+<h3 id="유효성-검사">
+  유효성 검사
+  <a class="heading-link" href="#%ec%9c%a0%ed%9a%a8%ec%84%b1-%ea%b2%80%ec%82%ac">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/validation/Valid.html"  class="external-link" target="_blank" rel="noopener">@Valid</a> - 속성, 메서드 매개변수 또는 반환 유형을 유효성 검사 대상으로 표시합니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/validation/annotation/Validated.html"  class="external-link" target="_blank" rel="noopener">@Validated</a> - 여러 그룹의 유효성 검사를 허용하는 <code>@Valid</code>의 변형입니다(예: 애노테이션이 붙은 클래스의 모든 필드).</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/NotNull.html"  class="external-link" target="_blank" rel="noopener">@NotNull</a> - null이 아니어야 합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/NotEmpty.html"  class="external-link" target="_blank" rel="noopener">@NotEmpty</a> - null이 아니고 비어 있지 않아야 합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/NotBlank.html"  class="external-link" target="_blank" rel="noopener">@NotBlank</a> - null이 아니고 최소한 하나의 공백이 아닌 문자가 있어야 합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/Digits.html"  class="external-link" target="_blank" rel="noopener">@Digits</a> - 허용 범위 내의 숫자여야 합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/Past.html"  class="external-link" target="_blank" rel="noopener">@Past</a> - 과거의 순간, 날짜 또는 시간이어야 합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/validation/constraints/Future.html"  class="external-link" target="_blank" rel="noopener">@Future</a> - 미래의 순간, 날짜 또는 시간이어야 합니다.</li>
+<li>&hellip;</li>
+</ul>
+<h2 id="스프링-부트">
+  스프링 부트
+  <a class="heading-link" href="#%ec%8a%a4%ed%94%84%eb%a7%81-%eb%b6%80%ed%8a%b8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/SpringBootConfiguration.html"  class="external-link" target="_blank" rel="noopener">@SpringBootConfiguration</a> - Spring Boot 애플리케이션 <code>@Configuration</code>을 나타냅니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/EnableAutoConfiguration.html"  class="external-link" target="_blank" rel="noopener">@EnableAutoConfiguration</a> - 클래스 경로를 기반으로 필요한 빈을 제공하기 위해 애플리케이션 컨텍스트 자동 구성을 활성화합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/context/properties/ConfigurationProperties.html"  class="external-link" target="_blank" rel="noopener">@ConfigurationProperties</a> - 키 값 속성의 외부 바인딩을 제공합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/context/properties/ConstructorBinding.html"  class="external-link" target="_blank" rel="noopener">@ConstructorBinding</a> - 세터 대신 생성자를 사용하여 속성을 바인딩합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/context/properties/ConfigurationPropertiesScan.html"  class="external-link" target="_blank" rel="noopener">@ConfigurationPropertiesScan</a> - <code>@ConfigurationProperties</code> 클래스를 자동으로 감지합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/SpringBootApplication.html"  class="external-link" target="_blank" rel="noopener">@SpringBootApplication</a> - <code>@SpringBootConfiguration</code>, <code>@EnableAutoConfiguration</code>, <code>@ConfigurationPropertiesScan</code> 및 <code>@ComponentScan</code>의 조합입니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/domain/EntityScan.html"  class="external-link" target="_blank" rel="noopener">@EntityScan</a> - 엔티티 클래스를 스캔할 기본 패키지를 구성합니다.</li>
+<li><a href="https://docs.spring.io/spring-data/data-jpa/docs/current/api/org/springframework/data/jpa/repository/config/EnableJpaRepositories.html"  class="external-link" target="_blank" rel="noopener">@EnableJpaRepositories</a> - JPA 리포지토리의 자동 구성을 활성화합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/AutoConfiguration.html"  class="external-link" target="_blank" rel="noopener">@AutoConfiguration</a> - 새로운 자동 구성 클래스를 정의합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/AutoConfigureBefore.html"  class="external-link" target="_blank" rel="noopener">@AutoConfigureBefore</a> - 지정된 자동 구성 클래스보다 먼저 자동 구성을 적용합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/AutoConfigureAfter.html"  class="external-link" target="_blank" rel="noopener">@AutoConfigureAfter</a> - 지정된 자동 구성 클래스 이후에 자동 구성을 적용합니다.</li>
+</ul>
+<h2 id="스프링-부트-테스트">
+  스프링 부트 테스트
+  <a class="heading-link" href="#%ec%8a%a4%ed%94%84%eb%a7%81-%eb%b6%80%ed%8a%b8-%ed%85%8c%ec%8a%a4%ed%8a%b8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/context/SpringBootTest.html"  class="external-link" target="_blank" rel="noopener">@SpringBootTest</a> - 애노테이션이 붙은 테스트 클래스는 통합 테스트를 위해 전체 애플리케이션 컨텍스트를 로드합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/web/servlet/WebMvcTest.html"  class="external-link" target="_blank" rel="noopener">@WebMvcTest</a> - 애노테이션이 붙은 테스트 클래스는 웹 레이어만 로드합니다(서비스 및 데이터 레이어는 무시됨).</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/autoconfigure/orm/jpa/DataJpaTest.html"  class="external-link" target="_blank" rel="noopener">@DataJpaTest</a> - 애노테이션이 붙은 클래스는 JPA 구성 요소만 로드합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.testing.spring-boot-applications.json-tests"  class="external-link" target="_blank" rel="noopener">@JsonTest</a> - 애노테이션이 붙은 클래스는 직렬화 및 역직렬화 테스트를 위해 JSON 매퍼만 로드합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/mock/mockito/MockBean.html"  class="external-link" target="_blank" rel="noopener">@MockBean</a> - 애노테이션이 붙은 필드를 모의 객체로 표시하고 애플리케이션 컨텍스트에 빈으로 로드합니다.</li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/mock/mockito/SpyBean.html"  class="external-link" target="_blank" rel="noopener">@SpyBean</a> - 빈의 부분 모킹을 허용합니다.</li>
+<li><a href="https://www.javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mock.html"  class="external-link" target="_blank" rel="noopener">@Mock</a> - 애노테이션이 붙은 필드를 모의 객체로 정의합니다.</li>
+</ul>
+<h2 id="스프링-테스트">
+  스프링 테스트
+  <a class="heading-link" href="#%ec%8a%a4%ed%94%84%eb%a7%81-%ed%85%8c%ec%8a%a4%ed%8a%b8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/context/ContextConfiguration.html"  class="external-link" target="_blank" rel="noopener">@ContextConfiguration</a> - 통합 테스트를 위해 애플리케이션 컨텍스트를 로드할 <code>@Configuration</code>을 정의합니다.</li>
+<li><a href="https://junit.org/junit5/docs/current/api/org.junit.jupiter.api/org/junit/jupiter/api/extension/ExtendWith.html"  class="external-link" target="_blank" rel="noopener">@ExtendWith</a> - 테스트를 실행할 확장을 정의합니다(예: MockitoExtension).</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/context/junit/jupiter/SpringJUnitConfig.html"  class="external-link" target="_blank" rel="noopener">@SpringJUnitConfig</a> - <code>@ContextConfiguration</code> 및 <code>@ExtendWith(SpringExtension.class)</code>를 결합합니다.</li>
+<li><a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/context/TestPropertySource.html"  class="external-link" target="_blank" rel="noopener">@TestPropertySource</a> - 통합 테스트에 사용되는 속성 파일의 위치를 정의합니다.</li>
+<li><a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/annotation/DirtiesContext.html"  class="external-link" target="_blank" rel="noopener">@DirtiesContext</a> - 애노테이션이 붙은 테스트가 애플리케이션 컨텍스트를 더럽히고 각 테스트 후에 정리됨을 나타냅니다.</li>
+<li><a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/context/ActiveProfiles.html"  class="external-link" target="_blank" rel="noopener">@ActiveProfiles</a> - 테스트 애플리케이션 컨텍스트를 초기화할 때 로드할 활성 빈 정의를 정의합니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/context/jdbc/Sql.html"  class="external-link" target="_blank" rel="noopener">@Sql</a> - 테스트 전후에 실행할 SQL 스크립트와 문을 정의할 수 있습니다.</li>
+</ul>
+<h2 id="트랜잭션">
+  트랜잭션
+  <a class="heading-link" href="#%ed%8a%b8%eb%9e%9c%ec%9e%ad%ec%85%98">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/annotation/EnableTransactionManagement.html"  class="external-link" target="_blank" rel="noopener">@EnableTransactionManagement</a> - 애노테이션 기반 트랜잭션 선언 <code>@Transactional</code>을 활성화합니다.</li>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/annotation/Transactional.html"  class="external-link" target="_blank" rel="noopener">@Transactional</a> - 애노테이션이 붙은 메서드는 트랜잭션 방식으로 실행됩니다.</li>
+</ul>
+<h2 id="스프링-jpa-및-하이버네이트">
+  스프링 JPA 및 하이버네이트
+  <a class="heading-link" href="#%ec%8a%a4%ed%94%84%eb%a7%81-jpa-%eb%b0%8f-%ed%95%98%ec%9d%b4%eb%b2%84%eb%84%a4%ec%9d%b4%ed%8a%b8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/Id.html"  class="external-link" target="_blank" rel="noopener">@Id</a> - 애노테이션이 붙은 필드를 엔티티의 기본 키로 표시합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/GeneratedValue.html"  class="external-link" target="_blank" rel="noopener">@GeneratedValue</a> - 기본 키의 생성 전략을 제공합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/Column.html"  class="external-link" target="_blank" rel="noopener">@Column</a> - 필드에 대한 추가 구성을 제공합니다(예: 열 이름).</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/Table.html"  class="external-link" target="_blank" rel="noopener">@Table</a> - 엔티티에 대한 추가 구성을 제공합니다(예: 테이블 이름).</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/PersistenceContext.html"  class="external-link" target="_blank" rel="noopener">@PersistenceContext</a> - <code>EntityManager</code>가 애노테이션이 붙은 세터와 필드에 주입됩니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/Embedded.html"  class="external-link" target="_blank" rel="noopener">@Embedded</a> - 애노테이션이 붙은 필드는 <code>Embeddable</code> 클래스의 값으로 인스턴스화됩니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/Embeddable.html"  class="external-link" target="_blank" rel="noopener">@Embeddable</a> - 애노테이션이 붙은 클래스의 인스턴스는 엔티티의 일부로 저장됩니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/EmbeddedId.html"  class="external-link" target="_blank" rel="noopener">@EmbeddedId</a> - 애노테이션이 붙은 속성을 임베디드 클래스에 의해 매핑된 복합 키로 표시합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/AttributeOverride.html"  class="external-link" target="_blank" rel="noopener">@AttributeOverride</a> - 필드의 기본 매핑을 재정의합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/Transient.html"  class="external-link" target="_blank" rel="noopener">@Transient</a> - 애노테이션이 붙은 필드는 영속적이지 않습니다.</li>
+<li><a href="https://docs.jboss.org/hibernate/orm/5.4/javadocs/org/hibernate/annotations/CreationTimestamp.html"  class="external-link" target="_blank" rel="noopener">@CreationTimestamp</a> - 애노테이션이 붙은 필드는 엔티티가 처음 저장된 타임스탬프를 포함합니다.</li>
+<li><a href="https://docs.jboss.org/hibernate/orm/5.4/javadocs/org/hibernate/annotations/UpdateTimestamp.html"  class="external-link" target="_blank" rel="noopener">@UpdateTimestamp</a> - 애노테이션이 붙은 필드는 엔티티가 마지막으로 업데이트된 타임스탬프를 포함합니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/ManyToOne.html"  class="external-link" target="_blank" rel="noopener">@ManyToOne</a> - N:1 관계를 나타내며, 애노테이션이 붙은 필드를 포함하는 엔티티는 다른 클래스의 엔티티와 단일 관계를 가지지만 다른 클래스는 여러 관계를 가집니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/JoinColumn.html"  class="external-link" target="_blank" rel="noopener">@JoinColumn</a> - 소유 측의 <code>@ManyToOne</code> 또는 <code>@OneToOne</code> 관계에서 엔티티를 조인하는 열을 나타내거나 단방향 <code>@OneToMany</code>를 나타냅니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/OneToOne.html"  class="external-link" target="_blank" rel="noopener">@OneToOne</a> - 1:1 관계를 나타냅니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/MapsId.html"  class="external-link" target="_blank" rel="noopener">@MapsId</a> - <code>@ManyToOne</code> 또는 <code>@OneToOne</code> 관계의 소유 측 조인 열을 참조하여 참조 및 참조된 엔티티의 기본 키로 만듭니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/ManyToMany.html"  class="external-link" target="_blank" rel="noopener">@ManyToMany</a> - N:M 관계를 나타냅니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/persistence/JoinTable.html"  class="external-link" target="_blank" rel="noopener">@JoinTable</a> - 조인 테이블을 사용한 연관을 지정합니다.</li>
+<li><a href="https://docs.jboss.org/hibernate/orm/5.4/javadocs/org/hibernate/annotations/BatchSize.html"  class="external-link" target="_blank" rel="noopener">@BatchSize</a> - 애노테이션이 붙은 엔티티 컬렉션을 지연 로드할 크기를 정의합니다.</li>
+<li><a href="https://docs.jboss.org/hibernate/orm/5.4/javadocs/org/hibernate/annotations/FetchMode.html"  class="external-link" target="_blank" rel="noopener">@FetchMode</a> - 연관에 대한 페치 전략을 정의합니다(예: 단일 서브쿼리로 모든 엔티티 로드).</li>
+</ul>
+<h2 id="스프링-시큐리티">
+  스프링 시큐리티
+  <a class="heading-link" href="#%ec%8a%a4%ed%94%84%eb%a7%81-%ec%8b%9c%ed%81%90%eb%a6%ac%ed%8b%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/config/annotation/web/configuration/EnableWebSecurity.html"  class="external-link" target="_blank" rel="noopener">@EnableWebSecurity</a> - 웹 보안을 활성화합니다.</li>
+<li><a href="https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/config/annotation/method/configuration/EnableGlobalMethodSecurity.html"  class="external-link" target="_blank" rel="noopener">@EnableGlobalMethodSecurity</a> - 메서드 보안을 활성화합니다.</li>
+<li><a href="https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/access/prepost/PreAuthorize.html"  class="external-link" target="_blank" rel="noopener">@PreAuthorize</a> - SpEL을 사용하여 접근 제어 표현식을 정의하며, 보호된 메서드를 호출하기 전에 평가됩니다.</li>
+<li><a href="https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/access/prepost/PostAuthorize.html"  class="external-link" target="_blank" rel="noopener">@PostAuthorize</a> - SpEL을 사용하여 접근 제어 표현식을 정의하며, 보호된 메서드를 호출한 후 평가됩니다.</li>
+<li><a href="https://javaee.github.io/javaee-spec/javadocs/javax/annotation/security/RolesAllowed.html"  class="external-link" target="_blank" rel="noopener">@RolesAllowed</a> - 보호된 메서드를 호출할 수 있는 보안 역할 목록을 지정합니다.</li>
+</ul>
+<h2 id="스프링-aop">
+  스프링 AOP
+  <a class="heading-link" href="#%ec%8a%a4%ed%94%84%eb%a7%81-aop">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/EnableAspectJAutoProxy.html"  class="external-link" target="_blank" rel="noopener">@EnableAspectJAutoProxy</a> - <code>@Aspect</code>로 표시된 구성 요소를 처리하는 지원을 활성화합니다.</li>
+<li><a href="https://javadoc.io/static/org.aspectj/aspectjrt/1.9.5/org/aspectj/lang/annotation/Aspect.html"  class="external-link" target="_blank" rel="noopener">@Aspect</a> - 애노테이션이 붙은 구성 요소를 포인트컷과 어드바이스를 포함하는 측면으로 선언합니다.</li>
+<li><a href="https://javadoc.io/static/org.aspectj/aspectjrt/1.9.5/org/aspectj/lang/annotation/Before.html"  class="external-link" target="_blank" rel="noopener">@Before</a> - 호출이 조인 포인트로 전파되기 전에 실행되는 포인트컷을 선언합니다.</li>
+<li><a href="https://javadoc.io/static/org.aspectj/aspectjrt/1.9.5/org/aspectj/lang/annotation/AfterReturning.html"  class="external-link" target="_blank" rel="noopener">@AfterReturning</a> - 조인 포인트가 성공적으로 결과를 반환하면 실행되는 포인트컷을 선언합니다.</li>
+<li><a href="https://javadoc.io/static/org.aspectj/aspectjrt/1.9.5/org/aspectj/lang/annotation/AfterThrowing.html"  class="external-link" target="_blank" rel="noopener">@AfterThrowing</a> - 조인 포인트가 예외를 던지면 실행되는 포인트컷을 선언합니다.</li>
+<li><a href="https://javadoc.io/static/org.aspectj/aspectjrt/1.9.5/org/aspectj/lang/annotation/After.html"  class="external-link" target="_blank" rel="noopener">@After</a> - 조인 포인트가 성공적으로 결과를 반환하거나 예외를 던지면 실행되는 포인트컷을 선언합니다.</li>
+<li><a href="https://javadoc.io/static/org.aspectj/aspectjrt/1.9.5/org/aspectj/lang/annotation/Around.html"  class="external-link" target="_blank" rel="noopener">@Around</a> - 호출 전에 실행되는 포인트컷을 선언하여 조인 포인트의 실행을 어드바이스에 제어를 넘깁니다.</li>
+</ul>
+<h2 id="유용한-링크">
+  유용한 링크
+  <a class="heading-link" href="#%ec%9c%a0%ec%9a%a9%ed%95%9c-%eb%a7%81%ed%81%ac">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/reference/"  class="external-link" target="_blank" rel="noopener">Spring 공식 문서</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/"  class="external-link" target="_blank" rel="noopener">Spring Boot 참조 가이드</a></li>
+<li><a href="https://docs.spring.io/spring-security/reference/"  class="external-link" target="_blank" rel="noopener">Spring Security 문서</a></li>
+<li><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods"  class="external-link" target="_blank" rel="noopener">Spring Data JPA 문서</a></li>
+<li><a href="https://www.baeldung.com/spring-tutorial"  class="external-link" target="_blank" rel="noopener">Baeldung Spring 튜토리얼</a></li>
+<li><a href="https://github.com/spring-projects/spring-framework"  class="external-link" target="_blank" rel="noopener">Spring 깃허브 저장소</a></li>
+</ul>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2025
+     News reporter 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.js"></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

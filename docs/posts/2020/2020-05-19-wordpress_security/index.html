@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>
+  워드프레스 보안 설정 · It news
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="News reporter">
+<meta name="description" content="워드프레스로 만든 홈페이지 보안 적용 정리..">
+<meta name="keywords" content="blog,developer,AI,it">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="워드프레스 보안 설정">
+  <meta name="twitter:description" content="워드프레스로 만든 홈페이지 보안 적용 정리..">
+
+<meta property="og:url" content="http://localhost:1313/posts/2020/2020-05-19-wordpress_security/">
+  <meta property="og:site_name" content="It news">
+  <meta property="og:title" content="워드프레스 보안 설정">
+  <meta property="og:description" content="워드프레스로 만든 홈페이지 보안 적용 정리..">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-05-19T10:37:23+09:00">
+    <meta property="article:modified_time" content="2020-05-19T10:37:23+09:00">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Php">
+    <meta property="article:tag" content="Wordpress">
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/posts/2020/2020-05-19-wordpress_security/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://localhost:1313/">
+      It news
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://localhost:1313/posts/2020/2020-05-19-wordpress_security/">
+              워드프레스 보안 설정
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2020-05-19T10:37:23&#43;09:00">
+                May 19, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              6-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/utillity/">Utillity</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/security/">Security</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/php/">Php</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/wordpress/">Wordpress</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>워드프레스로 만든 홈페이지 보안 적용 정리..</p>
+<p><img alt="WordPress" src="https://kalkin7.files.wordpress.com/2013/06/wordpress-wide1440.png?w=1024"></p>
+<p>5년 전에 워드프레스(wordpress)로 홈페이지를 제작한 적이 있는데, 어느 순간부터 홈페이지가 이상한 사이트로 이동을 하는 겁니다.  처음에는 단순하게 홈페이지를 복구 했는데, 복구해도 계속 같은 증상이 반복이 되었습니다.  그래서 워드프레스 버전이 낮아서 그런가 해서 php를 7.3으로 올리고 워드프레스를 최신으로 업데이트를 했습니다. 하지만 같은 증상이 반복 되는 겁니다. 결국은 기존에 감염된 파일을 찾아내서 삭제하고 보안을 강화하는 형식으로 홈페이지를 복구 했습니다.  이렇게 한달을 운영하면서 보안이 문제가 없어 보여서 여기에 정리해 봅니다.</p>
+<p>아래 작업을 시작하기 전에 단계마다 사이트와 DB를 백업 하시면서 하시는걸 추천 드립니다.</p>
+<h2 id="보안-플러그인-설치">
+  보안 플러그인 설치
+  <a class="heading-link" href="#%eb%b3%b4%ec%95%88-%ed%94%8c%eb%9f%ac%ea%b7%b8%ec%9d%b8-%ec%84%a4%ec%b9%98">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>워드프레스 플러그인 추가에서 <code>security</code>라고 검색을 해 보면 백여개가 넘는 플러그인들이 검색이 됩니다.  이 중에서 평점이 높고 사용자들이 많이 설치한 플러인 위주로 설치하고 사용해 봤습니다. 그리고 3개의 플러그인을 사용하고 있습니다.</p>
+<h3 id="ithemes-security">
+  iThemes Security
+  <a class="heading-link" href="#ithemes-security">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Link : <a href="https://wordpress.org/plugins/better-wp-security/"  class="external-link" target="_blank" rel="noopener">iThemes Security</a></p>
+<p>가장 많은 도움을 받은 플러그인입니다.  관리자 메뉴에서 <code>Settings</code>를 열어 보면 다양한 설정들이 보입니다. 차근차근 하니씩 설정해 주면 됩니다.  대부분의 보안 설정을 진행 할 수 있습니다.</p>
+<p>그리고 가장 추천하는 설정은 <code>File Change Detection</code>입니다.  사이트에서 파일이 변경된 사항을 추적해서 기록해 주며, 메일로도 알려줍니다. 초기에 세팅을 해 놓고 사이트에 문제가 없는지 확인하는데 도움을 많이 줍니다.</p>
+<h3 id="wordfence-security">
+  Wordfence Security
+  <a class="heading-link" href="#wordfence-security">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Link :  <a href="https://wordpress.org/plugins/wordfence/"  class="external-link" target="_blank" rel="noopener">Wordfence Security</a></p>
+<p>사이트에 대한 공격을 모니터링해 줍니다. 사이트에 공격이 들어오면 알아서 막아도 주면서 해당 IP를 블럭해서 공격을 막아 줍니다.  관리자 메뉴 중에서 <code>Live Traffic</code>이라는 메뉴가 있는데, 여기서  로그인 시도나 해킹 시도에 대한 로그를 조회 해 볼 수 있습니다. 여기를 잘 파악해 보면,  &ldquo;아~ 이런식으로 해킹을 시도하는구나&rdquo; 알게 됩니다.</p>
+<p>그리고, 2차 인증(Two-Factor Authentication)기능으로 OTP를 연결해 준다면 로그인 시도에 관련된 공격으로 부터 많이 안전해 집니다.</p>
+<h3 id="sucuri-security">
+  Sucuri Security
+  <a class="heading-link" href="#sucuri-security">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Link: <a href="https://wordpress.org/plugins/sucuri-scanner/"  class="external-link" target="_blank" rel="noopener">Sucuri Security</a></p>
+<p>앞에 2개의 플러그인 기능과 많이 겹치긴 하지만 보조적인 역할로 설치해 줬습니다. 보안 활동 감시 및 멀웨어 검사등의 기능을 합니다.</p>
+<p>이렇게 위 3개의 플러그인에서 중복되는 기능도 있긴 하지만, 혹시나 모를 안정성을 위해서 3개를 설치 했습니다.</p>
+<p>개인적인 의견으로는 <a href="https://wordpress.org/plugins/better-wp-security"  class="external-link" target="_blank" rel="noopener">iThemes Security</a>와 <a href="https://wordpress.org/plugins/wordfence/"  class="external-link" target="_blank" rel="noopener">Wordfence Security</a>만 설치 해도 충분 할 것으로 보입니다.</p>
+<h2 id="손으로-벌레-잡기">
+  손으로 벌레 잡기
+  <a class="heading-link" href="#%ec%86%90%ec%9c%bc%eb%a1%9c-%eb%b2%8c%eb%a0%88-%ec%9e%a1%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>위 플러그인을 설치하면 멀웨어나 다양한 형태의 해킹 시도를 감지 할 수 있습니다. 하지만 플러그인 만으로도 잡히지 않는 경우들 있습니다. 이럴때 하나씩 잡아야 합니다.</p>
+<h3 id="의심되는-파일-찾기">
+  의심되는 파일 찾기
+  <a class="heading-link" href="#%ec%9d%98%ec%8b%ac%eb%90%98%eb%8a%94-%ed%8c%8c%ec%9d%bc-%ec%b0%be%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type f -name <span class="s1">&#39;*.php&#39;</span> <span class="p">|</span> xargs grep -l <span class="s2">&#34;eval *(&#34;</span>
+</span></span><span class="line"><span class="cl">find . -type f -name <span class="s1">&#39;*.php&#39;</span> <span class="p">|</span> xargs grep -l <span class="s2">&#34;base64_decode *(&#34;</span>
+</span></span><span class="line"><span class="cl">find . -type f -name <span class="s1">&#39;*.php&#39;</span> <span class="p">|</span> xargs grep -l <span class="s2">&#34;gzinflate *(&#34;</span>
+</span></span></code></pre></div><p><a href="https://www.php.net/manual/en/function.eval.php"  class="external-link" target="_blank" rel="noopener">eval</a>은 함수는 php에서 가변 변수를 사용하게 해주는 함수로 가변 변수를 이용해서 다양한 해킹 시도하는 멀웨어 파일에서 자주 사용 됩니다.  <code>base64_decode</code>와 <code>gzinflate</code>는 함수는 스트링을 난독화 시켜서 사용자가 php파일을 바로 해독하기 어렵도록 해 줍니다.</p>
+<p>이렇게 3개의 단어를 검색해서 전혀 쓰이지 않을것 같은 파일이나 의심스러운 파일은 수정하거나 삭제해 주는 것이 좋습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type f -name <span class="s1">&#39;*.php&#39;</span>  <span class="p">|</span> grep -i <span class="s1">&#39;&lt;iframe&#39;</span>
+</span></span></code></pre></div><p>php파일에 iframe이 들어 있는지를 검사합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find wp-content/uploads -type f -iname <span class="s1">&#39;*.jpg&#39;</span> <span class="p">|</span> xargs grep -i php
+</span></span></code></pre></div><p>jpg 파일이지만 안에 php가 들어있는 멀웨어 공격을 검사합니다.</p>
+<h3 id="업로드-폴더-검사">
+  업로드 폴더 검사
+  <a class="heading-link" href="#%ec%97%85%eb%a1%9c%eb%93%9c-%ed%8f%b4%eb%8d%94-%ea%b2%80%ec%82%ac">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>업로드 폴더에 올라간 php실행 파일을 찾아 수상한 파일들은 삭제를 해 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find wp-content/uploads -type f -name <span class="s1">&#39;*.php&#39;</span>
+</span></span></code></pre></div><h3 id="최근에-변경된-파일-찾기">
+  최근에 변경된 파일 찾기
+  <a class="heading-link" href="#%ec%b5%9c%ea%b7%bc%ec%97%90-%eb%b3%80%ea%b2%bd%eb%90%9c-%ed%8c%8c%ec%9d%bc-%ec%b0%be%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type f -name <span class="s1">&#39;*.php&#39;</span> -mtime -7
+</span></span></code></pre></div><p>최근 7일간 php 파일중에서 변경되 파일의 목록을 출력해 줍니다.</p>
+<h2 id="htaccess-편집하기">
+  .htaccess 편집하기
+  <a class="heading-link" href="#htaccess-%ed%8e%b8%ec%a7%91%ed%95%98%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p><code>.htaccess</code>를 편집하면 사이트 접근을 제한 할 수 있습니다. 보안 플러그인에서도 <code>.htaccess</code>파일을 편집해 줍니다.</p>
+<p>하지만, 일부는 직접 수정해서 원하는 대로 설정을 할 수 있습니다.</p>
+<h3 id="디렉토리-브라우징-끄기">
+  디렉토리 브라우징 끄기
+  <a class="heading-link" href="#%eb%94%94%eb%a0%89%ed%86%a0%eb%a6%ac-%eb%b8%8c%eb%9d%bc%ec%9a%b0%ec%a7%95-%eb%81%84%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>대부분은 빈 index.php 파일을 만들어서 빈 디렉토리의 브라우징을 못 하도록 처리를 해 두긴 하지만, <code>.htaccess</code>파일에서도 이 기능을 끌 수 있습니다.</p>
+<pre tabindex="0"><code>Options -Indexes
+</code></pre><h3 id="wp-configphp-파일을-보호해-주기">
+  wp-config.php 파일을 보호해 주기
+  <a class="heading-link" href="#wp-configphp-%ed%8c%8c%ec%9d%bc%ec%9d%84-%eb%b3%b4%ed%98%b8%ed%95%b4-%ec%a3%bc%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><code>wp-config.php</code>파일에는 사이트의 중요한 정보를 가지고 있습니다. 웹에서 바로 접근을 할 수 없도록 설정해 줍니다. <code>.htaccess</code>파일에 아래의 내용을 추가해 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;files</span> <span class="err">wp-config.php</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">order allow,deny
+</span></span><span class="line"><span class="cl">deny from all
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/files&gt;</span>
+</span></span></code></pre></div><h3 id="xml-rpc파일-접근-끄기">
+  XML-RPC파일 접근 끄기
+  <a class="heading-link" href="#xml-rpc%ed%8c%8c%ec%9d%bc-%ec%a0%91%ea%b7%bc-%eb%81%84%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>xmlrpc.php 파일은 워드프레스 서드파트 앱에서 사이트를 접근하도록 해 줍니다. 만약에 서드파티 앱을 사용하지 않는다면 이 기능을 꺼 주는게 좋습니다.  <code>.htaccess</code>파일에 아래의 내용을 추가해 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Files</span> <span class="err">xmlrpc.php</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">order deny,allow
+</span></span><span class="line"><span class="cl">deny from all
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Files&gt;</span>
+</span></span></code></pre></div><p><a href="https://wordpress.org/plugins/better-wp-security/"  class="external-link" target="_blank" rel="noopener">iThemes Security</a>에서도 설정이 가능 합니다.</p>
+<h3 id="스크립트-인젝션-끄기">
+  스크립트 인젝션 끄기
+  <a class="heading-link" href="#%ec%8a%a4%ed%81%ac%eb%a6%bd%ed%8a%b8-%ec%9d%b8%ec%a0%9d%ec%85%98-%eb%81%84%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>해커가 깆존 php문서에 악성코드를 삽입하지 못 하도록 스크립트 삽입을 허용하지 않습니다. <code>.htaccess</code>파일에 mode_rewrite 부분에 아래의 내용을 추가해 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;IfModule</span> <span class="err">mod_rewrite.c</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">Options +FollowSymLinks
+</span></span><span class="line"><span class="cl">RewriteEngine On
+</span></span><span class="line"><span class="cl">RewriteCond %{QUERY_STRING} (<span class="err">&lt;</span>|%3C).*script.*(&gt;|%3E) [NC,OR]
+</span></span><span class="line"><span class="cl">RewriteCond %{QUERY_STRING} GLOBALS(=|[|%[0-9A-Z]{0,2}) [OR]
+</span></span><span class="line"><span class="cl">RewriteCond %{QUERY_STRING} _REQUEST(=|[|%[0-9A-Z]{0,2})
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ index.php [F,L]
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/IfModule&gt;</span>
+</span></span></code></pre></div><h3 id="특정-ip에서만-wp-admin-폴더를-접근-허용">
+  특정 ip에서만 wp-admin 폴더를 접근 허용
+  <a class="heading-link" href="#%ed%8a%b9%ec%a0%95-ip%ec%97%90%ec%84%9c%eb%a7%8c-wp-admin-%ed%8f%b4%eb%8d%94%eb%a5%bc-%ec%a0%91%ea%b7%bc-%ed%97%88%ec%9a%a9">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>wp-admin은 관리자 폴더 입니다. 특정 ip에서만 wp-admin을 접근 할 수 있도록 제한 합니다.</p>
+<p>wp-admin폴더에 <code>.htaccess</code>파일을 만들고 아래 내용을 추가해 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Limit</span> <span class="err">GET</span> <span class="err">POST</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">order deny,allow
+</span></span><span class="line"><span class="cl">deny from all
+</span></span><span class="line"><span class="cl">allow from 1.2.3.4
+</span></span><span class="line"><span class="cl">allow from 1.2.3.5
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Limit&gt;</span>
+</span></span></code></pre></div><p>기본적으로 접근을 제한하고, 그리고 관리자 메뉴에 접근해야 하는 ip만을 위와 같이 등록해 줍니다.</p>
+<h3 id="특정-워드프레스-폴더에서-php-실행-방지하기">
+  특정 워드프레스 폴더에서 php 실행 방지하기
+  <a class="heading-link" href="#%ed%8a%b9%ec%a0%95-%ec%9b%8c%eb%93%9c%ed%94%84%eb%a0%88%ec%8a%a4-%ed%8f%b4%eb%8d%94%ec%97%90%ec%84%9c-php-%ec%8b%a4%ed%96%89-%eb%b0%a9%ec%a7%80%ed%95%98%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>몇몇 해커들은 워드프레스 사이트의 업로드 기능을 이용해서 백도어를 설치하는 해킹을 시도 합니다. 이렇게 설치된 파일이 직접 실행이 않도록 <code>/wp-include/</code> ,<code>/wp-content/uploads/</code> 폴더등에서는 php가 실행되지 않도록 처리해 줄 수 있습니다.</p>
+<p><code>/wp-include/</code> 폴더와 <code>/wp-content/uploads</code> 폴더에 <code>.htaccess</code>파일을 생성하고 아래와 같이 넣어 줍니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Files</span> <span class="err">*.php</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">deny from all
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Files&gt;</span>
+</span></span></code></pre></div><h2 id="파일과-폴더의-접근-권한-설정하기">
+  파일과 폴더의 접근 권한 설정하기
+  <a class="heading-link" href="#%ed%8c%8c%ec%9d%bc%ea%b3%bc-%ed%8f%b4%eb%8d%94%ec%9d%98-%ec%a0%91%ea%b7%bc-%ea%b6%8c%ed%95%9c-%ec%84%a4%ec%a0%95%ed%95%98%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>파일과 폴더에 좀 더 엄격한 접근 권한 설정을 해서 파일이 변경 되지 않도록 방지 합니다.</p>
+<p>각 폴더의 권장하는 권한은 아래와 같습니다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>경로</th>
+          <th>권한</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>/</td>
+          <td>755</td>
+      </tr>
+      <tr>
+          <td>.htaccess</td>
+          <td>444</td>
+      </tr>
+      <tr>
+          <td>wp-includes</td>
+          <td>755</td>
+      </tr>
+      <tr>
+          <td>wp-admin</td>
+          <td>755</td>
+      </tr>
+      <tr>
+          <td>wp-admin/js</td>
+          <td>755</td>
+      </tr>
+      <tr>
+          <td>wp-content</td>
+          <td>755</td>
+      </tr>
+      <tr>
+          <td>wp-content/themes</td>
+          <td>755</td>
+      </tr>
+      <tr>
+          <td>wp-content/plugins</td>
+          <td>755</td>
+      </tr>
+      <tr>
+          <td>wp-content/uploads</td>
+          <td>755</td>
+      </tr>
+      <tr>
+          <td>wp-config.php</td>
+          <td>444</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="그외-팁">
+  그외 팁
+  <a class="heading-link" href="#%ea%b7%b8%ec%99%b8-%ed%8c%81">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="바이러스-검사하기">
+  바이러스 검사하기
+  <a class="heading-link" href="#%eb%b0%94%ec%9d%b4%eb%9f%ac%ec%8a%a4-%ea%b2%80%ec%82%ac%ed%95%98%ea%b8%b0">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>되도록이면 유명하거나 검증된 플러그인이나 테마를 사용하는 것이 좋습니다. 하지만 꼭 사용하고 싶다면 플러그인 또는 테마를 사용하기 전에 바이러스 검사를 해 볼 수 있습니다. 해당 플러그인이나 테마를 다운로드 받고 나서  <a href="https://www.virustotal.com/#/home/upload"  class="external-link" target="_blank" rel="noopener">VirusTotal</a> 사이트에서 검사를 해 보면 일차적으로 멀웨어가 있는지 체크가 가능 합니다.</p>
+<h2 id="정리">
+  정리
+  <a class="heading-link" href="#%ec%a0%95%eb%a6%ac">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>워드프레스는 정말 많은 사이트에서 사용되는 콘텐츠 관리 플랫폼입니다. 전체 웹사이트중 36%가 워드프레스로 구축 되어 있을 정도입니다.  많은 사이트에서 사용하는 만큼 취약점이 발견되면 바로 업데이트가 이루어 지고 있어서 워드프레스 자체만으로는 보안에 취약하지는 않습니다.</p>
+<p>하지만,  간단한 검색만으로 사이트가 워드프레스로 제작되어 있는지 확인이 가능하며, 워드프레스로 제작이 되어 있다면, 이전 버전들에서 노출된 보안의 헛점을 이용해서 공격하는 많은 방법이 공개 되어 있어서, 공격의 대상이 되기 쉽니다. 그리고, 누구나 만들 수 있는 플러그인과 테마로 인해서, 개발자가 본의 아니게 보안에 취약한 플러그인이 만들어 질 수도 있으며, 이런 취약점이 노출이 되면 사이트 보안에 문제가 발생하게 됩니다.</p>
+<p>워드프레스는 아래 3가지 정도면 잘 지키면 보안에 별 문제가 없어 보입니다.</p>
+<ol>
+<li>워드프레스, 테마, 플러그인을 항상 최신 버전으로 유지 한다.</li>
+<li>플러그인은 되도록이면 검증된 플러그인으로 설치하고 최소한으로 설치한다.</li>
+<li>보안 플러그인은 꼭 사용한다.</li>
+</ol>
+<p>이렇게 3가지 정도면 보안에 문제가 발생하지 않는거 같습니다.</p>
+<p>그리고 추가로 혹시나 모를 문제를 방지하기 위해서 정기적인 백업도 잊지 말아야 합니다.</p>
+<p>복구 시점을 만들어 주는것 뿐만 아니라.. 변경 사항을 비교해 보면 보안의 취약점을 찾는데 도움이 됩니다.</p>
+<h2 id="참고자료">
+  참고자료
+  <a class="heading-link" href="#%ec%b0%b8%ea%b3%a0%ec%9e%90%eb%a3%8c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="http://www.ciokorea.com/t/21999/%EA%B0%9C%EB%B0%9C%EC%9E%90/114510"  class="external-link" target="_blank" rel="noopener">&lsquo;만만한 타깃&rsquo; 워드프레스 보안 강화 툴·방법 총정리</a></li>
+<li><a href="https://www.thewordcracker.com/basic/%EC%9B%8C%EB%93%9C%ED%94%84%EB%A0%88%EC%8A%A4-%EB%B3%B4%EC%95%88-%EA%B0%95%ED%99%94%EB%A5%BC-%EC%9C%84%ED%95%9C-%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-%EC%84%B8-%EA%B0%80%EC%A7%80-%EB%B0%A9%EB%B2%95/"  class="external-link" target="_blank" rel="noopener">워드프레스 보안 강화를 위한 기본적인 세 가지 방법</a></li>
+<li><a href="https://m.post.naver.com/viewer/postView.nhn?volumeNo=14008515&amp;memberNo=9711586"  class="external-link" target="_blank" rel="noopener">워드프레스 웹사이트 보안을 위한 10가지 노하우</a></li>
+<li><a href="https://www.wpbeginner.com/wordpress-security/"  class="external-link" target="_blank" rel="noopener">The Ultimate WordPress Security Guide – Step by Step (2020)</a></li>
+<li><a href="https://www.wpbeginner.com/wp-tutorials/9-most-useful-htaccess-tricks-for-wordpress/"  class="external-link" target="_blank" rel="noopener">12 Most Useful .htaccess Tricks for WordPress</a></li>
+<li><a href="https://kinsta.com/blog/wordpress-security/"  class="external-link" target="_blank" rel="noopener">WordPress Security – 19 Steps to Lock Down Your Site</a></li>
+<li><a href="https://www.webarxsecurity.com/comprehensive-wordpress-malware-removal-guide/"  class="external-link" target="_blank" rel="noopener">Comprehensive WordPress Malware Removal Guide</a></li>
+<li><a href="https://www.gregfreeman.io/2013/how-to-tell-if-your-php-site-has-been-compromised/"  class="external-link" target="_blank" rel="noopener">How to Tell if Your PHP Site has been Hacked or Compromised</a></li>
+</ul>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2025
+     News reporter 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.js"></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

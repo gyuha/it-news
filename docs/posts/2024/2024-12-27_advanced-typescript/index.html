@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>
+  TypeScript Interface와 Type · It news
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="News reporter">
+<meta name="description" content="TypeScript는 현대 웹 개발에서 필수로 자리 잡고 있는 정적 타이핑 언어입니다.">
+<meta name="keywords" content="blog,developer,AI,it">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TypeScript Interface와 Type">
+  <meta name="twitter:description" content="TypeScript는 현대 웹 개발에서 필수로 자리 잡고 있는 정적 타이핑 언어입니다.">
+
+<meta property="og:url" content="http://localhost:1313/posts/2024/2024-12-27_advanced-typescript/">
+  <meta property="og:site_name" content="It news">
+  <meta property="og:title" content="TypeScript Interface와 Type">
+  <meta property="og:description" content="TypeScript는 현대 웹 개발에서 필수로 자리 잡고 있는 정적 타이핑 언어입니다.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-27T22:00:06+09:00">
+    <meta property="article:modified_time" content="2024-12-27T22:00:06+09:00">
+    <meta property="article:tag" content="Typescript">
+
+
+
+
+<link rel="canonical" href="http://localhost:1313/posts/2024/2024-12-27_advanced-typescript/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.css" media="screen">
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://localhost:1313/">
+      It news
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://localhost:1313/posts/2024/2024-12-27_advanced-typescript/">
+              TypeScript Interface와 Type
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2024-12-27T22:00:06&#43;09:00">
+                December 27, 2024
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              8-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/typescript/">Typescript</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/typescript/">Typescript</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>TypeScript는 현대 웹 개발에서 필수로 자리 잡고 있는 정적 타이핑 언어입니다.</p>
+<p>JavaScript 위에서 작동하면서도 개발자가 안전성과 생산성을 향상시킬 수 있는 여러 고급 기능을 제공합니다. 이 글에서는 TypeScript의 고급 기능을 이해하기 쉽게 설명하고, 실무에서 활용 가능한 예제를 제공합니다.</p>
+<h2 id="interface">
+  Interface
+  <a class="heading-link" href="#interface">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="기본적인-interface-선언">
+  기본적인 Interface 선언
+  <a class="heading-link" href="#%ea%b8%b0%eb%b3%b8%ec%a0%81%ec%9d%b8-interface-%ec%84%a0%ec%96%b8">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Interface는 주로 객체의 구조를 정의하는 데 사용됩니다. 각 속성의 이름과 타입을 정의하며, 클래스에서도 이를 구현할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">id</span>: <span class="kt">number</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">email</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">newUser</span>: <span class="kt">User</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">id</span>: <span class="kt">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;철수&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">email</span><span class="o">:</span> <span class="s1">&#39;chulsoo@example.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><h3 id="선택적-속성optional-properties과-읽기-전용readonly-properties">
+  선택적 속성(Optional Properties)과 읽기 전용(Readonly Properties)
+  <a class="heading-link" href="#%ec%84%a0%ed%83%9d%ec%a0%81-%ec%86%8d%ec%84%b1optional-properties%ea%b3%bc-%ec%9d%bd%ea%b8%b0-%ec%a0%84%ec%9a%a9readonly-properties">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Interface는 선택적 속성과 읽기 전용 속성도 지원합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Post</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">title</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">content?</span>: <span class="kt">string</span><span class="p">;</span> <span class="c1">// 선택적 속성
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">readonly</span> <span class="nx">author</span>: <span class="kt">string</span><span class="p">;</span> <span class="c1">// 읽기 전용 속성
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">blogPost</span>: <span class="kt">Post</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;TypeScript Interface 사용법&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">author</span><span class="o">:</span> <span class="s1">&#39;영희&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="nx">blogPost</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s1">&#39;새로운 제목&#39;</span><span class="p">;</span> <span class="c1">// 가능
+</span></span></span><span class="line"><span class="cl"><span class="c1">// blogPost.author = &#39;철수&#39;; // 오류 발생
+</span></span></span></code></pre></div><h2 id="type">
+  Type
+  <a class="heading-link" href="#type">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="type-별칭-type-aliases">
+  Type 별칭 (Type Aliases)
+  <a class="heading-link" href="#type-%eb%b3%84%ec%b9%ad-type-aliases">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Type은 다양한 타입을 결합하거나 새로운 이름으로 기존 타입을 정의할 때 사용됩니다. 유니언 타입, 인터섹션 타입 등을 정의하기에도 적합합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">Status</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span> <span class="o">|</span> <span class="s1">&#39;inactive&#39;</span> <span class="o">|</span> <span class="s1">&#39;suspended&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">userStatus</span>: <span class="kt">Status</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span><span class="p">;</span>
+</span></span></code></pre></div><h3 id="객체-타입-정의">
+  객체 타입 정의
+  <a class="heading-link" href="#%ea%b0%9d%ec%b2%b4-%ed%83%80%ec%9e%85-%ec%a0%95%ec%9d%98">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Type도 interface와 마찬가지로 객체의 구조를 정의할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">Product</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">id</span>: <span class="kt">number</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">price</span>: <span class="kt">number</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">newProduct</span>: <span class="kt">Product</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">id</span>: <span class="kt">101</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;컴퓨터&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">price</span>: <span class="kt">1500000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><h2 id="interface와-type의-차이">
+  Interface와 Type의 차이
+  <a class="heading-link" href="#interface%ec%99%80-type%ec%9d%98-%ec%b0%a8%ec%9d%b4">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>특징</th>
+          <th>Interface</th>
+          <th>Type</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>타입 확장</td>
+          <td><code>extends</code> 키워드로 확장 가능</td>
+          <td>인터섹션(<code>&amp;</code>)으로 확장 가능</td>
+      </tr>
+      <tr>
+          <td>병합</td>
+          <td>동일 이름의 Interface는 병합 가능</td>
+          <td>Type은 병합이 불가</td>
+      </tr>
+      <tr>
+          <td>사용 대상</td>
+          <td>주로 객체, 클래스 구조 정의에 사용</td>
+          <td>다양한 타입 표현에 적합</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="interface-확장">
+  Interface 확장
+  <a class="heading-link" href="#interface-%ed%99%95%ec%9e%a5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Animal</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Dog</span> <span class="kr">extends</span> <span class="nx">Animal</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">breed</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">myDog</span>: <span class="kt">Dog</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;나비&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">breed</span><span class="o">:</span> <span class="s1">&#39;푸들&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><h3 id="type-확장">
+  Type 확장
+  <a class="heading-link" href="#type-%ed%99%95%ec%9e%a5">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">Bird</span> <span class="o">=</span> <span class="nx">Animal</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">canFly</span>: <span class="kt">boolean</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">myBird</span>: <span class="kt">Bird</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;참새&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">canFly</span>: <span class="kt">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>일반적으로 Interface는 객체에 적합하며, Type은 유연성과 간결성이 요구되는 상황에 더 적합합니다. 프로젝트의 요구 사항에 따라 적절히 선택하여 활용하세요.</p>
+<h3 id="interface와-type을-활용한-함수-작성">
+  Interface와 Type을 활용한 함수 작성
+  <a class="heading-link" href="#interface%ec%99%80-type%ec%9d%84-%ed%99%9c%ec%9a%a9%ed%95%9c-%ed%95%a8%ec%88%98-%ec%9e%91%ec%84%b1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Interface와 Type을 사용하면 함수의 매개변수와 반환값을 명확히 정의할 수 있습니다.</p>
+<h4 id="interface로-함수-정의">
+  Interface로 함수 정의
+  <a class="heading-link" href="#interface%eb%a1%9c-%ed%95%a8%ec%88%98-%ec%a0%95%ec%9d%98">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>Interface는 함수의 매개변수 객체의 구조를 정의하는 데 자주 사용됩니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Book</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">title</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">author</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">publishedYear</span>: <span class="kt">number</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">printBookInfo</span><span class="p">(</span><span class="nx">book</span>: <span class="kt">Book</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`제목: </span><span class="si">${</span><span class="nx">book</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">, 저자: </span><span class="si">${</span><span class="nx">book</span><span class="p">.</span><span class="nx">author</span><span class="si">}</span><span class="sb">, 출판년도: </span><span class="si">${</span><span class="nx">book</span><span class="p">.</span><span class="nx">publishedYear</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 올바른 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">printBookInfo</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;타입스크립트 마스터하기&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">author</span><span class="o">:</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">publishedYear</span>: <span class="kt">2023</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 잘못된 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">printBookInfo</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;타입스크립트 마스터하기&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">author</span><span class="o">:</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span> <span class="c1">// 오류: publishedYear 속성이 없음
+</span></span></span></code></pre></div><h4 id="type으로-함수-정의">
+  Type으로 함수 정의
+  <a class="heading-link" href="#type%ec%9c%bc%eb%a1%9c-%ed%95%a8%ec%88%98-%ec%a0%95%ec%9d%98">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">Status</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span> <span class="o">|</span> <span class="s1">&#39;inactive&#39;</span> <span class="o">|</span> <span class="s1">&#39;suspended&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">User</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">id</span>: <span class="kt">number</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">status</span>: <span class="kt">Status</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">updateUserStatus</span><span class="p">(</span><span class="nx">user</span>: <span class="kt">User</span><span class="p">,</span> <span class="nx">newStatus</span>: <span class="kt">Status</span><span class="p">)</span><span class="o">:</span> <span class="nx">User</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">user</span><span class="p">,</span> <span class="nx">status</span>: <span class="kt">newStatus</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">user</span>: <span class="kt">User</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">id</span>: <span class="kt">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;철수&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">status</span><span class="o">:</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">updatedUser</span> <span class="o">=</span> <span class="nx">updateUserStatus</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="s1">&#39;inactive&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">updatedUser</span><span class="p">);</span>
+</span></span></code></pre></div><h3 id="interface와-type의-장점-비교">
+  Interface와 Type의 장점 비교
+  <a class="heading-link" href="#interface%ec%99%80-type%ec%9d%98-%ec%9e%a5%ec%a0%90-%eb%b9%84%ea%b5%90">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<h4 id="interface의-주요-장점">
+  Interface의 주요 장점
+  <a class="heading-link" href="#interface%ec%9d%98-%ec%a3%bc%ec%9a%94-%ec%9e%a5%ec%a0%90">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<ol>
+<li><strong>클래스와의 통합</strong>: Interface는 클래스에서 implements 키워드를 사용하여 쉽게 구현할 수 있습니다.</li>
+<li><strong>자동 병합</strong>: 동일한 이름의 Interface는 자동으로 병합되므로 확장성이 높습니다.</li>
+</ol>
+<h4 id="type의-주요-장점">
+  Type의 주요 장점
+  <a class="heading-link" href="#type%ec%9d%98-%ec%a3%bc%ec%9a%94-%ec%9e%a5%ec%a0%90">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<ol>
+<li><strong>유연성</strong>: 유니언 타입, 인터섹션 타입 등 다양한 복합 타입을 작성할 때 유리합니다.</li>
+<li><strong>간결성</strong>: 간단하고 가독성이 높은 코드 작성에 적합합니다.</li>
+</ol>
+<h4 id="실무에서의-선택">
+  실무에서의 선택
+  <a class="heading-link" href="#%ec%8b%a4%eb%ac%b4%ec%97%90%ec%84%9c%ec%9d%98-%ec%84%a0%ed%83%9d">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>실무에서는 Interface와 Type을 상황에 맞게 혼합하여 사용하는 방식이 일반적입니다. <strong>객체의 모양을 설명해야 할 때는 Interface</strong>를, <strong>복합적인 타입을 정의할 때는 Type</strong>을 사용하는 것이 좋습니다.</p>
+<h2 id="유니언union-타입과-인터섹션intersection-타입">
+  유니언(Union) 타입과 인터섹션(Intersection) 타입
+  <a class="heading-link" href="#%ec%9c%a0%eb%8b%88%ec%96%b8union-%ed%83%80%ec%9e%85%ea%b3%bc-%ec%9d%b8%ed%84%b0%ec%84%b9%ec%85%98intersection-%ed%83%80%ec%9e%85">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>TypeScript는 여러 타입을 결합하여 새로운 타입을 만들어낼 수 있는 강력한 기능을 제공합니다. 이는 JavaScript에서의 논리 연산자 OR(||)와 AND(&amp;&amp;)와 비슷한 개념으로, 코드 베이스에서 정교한 타입 검사를 수행할 수 있게 합니다.</p>
+<h3 id="유니언-타입">
+  유니언 타입
+  <a class="heading-link" href="#%ec%9c%a0%eb%8b%88%ec%96%b8-%ed%83%80%ec%9e%85">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>유니언 타입은 두 개 이상의 타입을 조합하여 생성하는 타입입니다. 이를 통해 변수나 매개변수가 여러 타입 중 하나를 가질 수 있도록 지정할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">orderProduct</span><span class="p">(</span><span class="nx">orderId</span>: <span class="kt">string</span> <span class="o">|</span> <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;상품 주문 번호:&#39;</span><span class="p">,</span> <span class="nx">orderId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 👍 올바른 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">orderProduct</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">orderProduct</span><span class="p">(</span><span class="s1">&#39;123-abc&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 👎 잘못된 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">orderProduct</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;상품명&#39;</span> <span class="p">});</span>
+</span></span></code></pre></div><p>위 코드는 string 또는 number 타입을 매개변수로만 허용합니다. 다른 타입이 들어올 경우 컴파일 단계에서 오류를 반환합니다.</p>
+<h3 id="인터섹션-타입">
+  인터섹션 타입
+  <a class="heading-link" href="#%ec%9d%b8%ed%84%b0%ec%84%b9%ec%85%98-%ed%83%80%ec%9e%85">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>반면, 인터섹션 타입은 여러 타입의 모든 속성을 포함하는 새로운 타입을 생성합니다. 이는 객체 또는 변수 등이 여러 타입을 동시에 만족해야 할 때 유용합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Person</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">firstname</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">FootballPlayer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">club</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">transferPlayer</span><span class="p">(</span><span class="nx">player</span>: <span class="kt">Person</span> <span class="o">&amp;</span> <span class="nx">FootballPlayer</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">player</span><span class="p">.</span><span class="nx">firstname</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">player</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> 선수가 </span><span class="si">${</span><span class="nx">player</span><span class="p">.</span><span class="nx">club</span><span class="si">}</span><span class="sb">으로 이적합니다.`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 👍 올바른 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">transferPlayer</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;라마스&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">firstname</span><span class="o">:</span> <span class="s1">&#39;세르히오&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">club</span><span class="o">:</span> <span class="s1">&#39;PSG&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 👎 잘못된 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">transferPlayer</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;라마스&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">firstname</span><span class="o">:</span> <span class="s1">&#39;세르히오&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>여기서 transferPlayer 함수는 Person과 FootballPlayer의 모든 속성을 가지는 객체만 허용합니다. 속성이 누락되면 TypeScript는 컴파일 단계에서 오류를 반환합니다.</p>
+<h2 id="keyof-키워드">
+  Keyof 키워드
+  <a class="heading-link" href="#keyof-%ed%82%a4%ec%9b%8c%eb%93%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>keyof 키워드는 인터페이스나 객체의 키를 추출하여 새로운 유니언 타입을 생성할 수 있게 해줍니다. 이는 타입 안정성을 유지하고, 리팩토링 시 실수를 줄이는 데 중요한 역할을 합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">MovieCharacter</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">firstname</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">movie</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">characterProps</span> <span class="o">=</span> <span class="k">keyof</span> <span class="nx">MovieCharacter</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// characterProps는 &#39;firstname&#39; | &#39;name&#39; | &#39;movie&#39; 타입
+</span></span></span></code></pre></div><p>keyof를 사용하지 않고 직접 타입을 명시할 수도 있습니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">characterProps</span> <span class="o">=</span> <span class="s1">&#39;firstname&#39;</span> <span class="o">|</span> <span class="s1">&#39;name&#39;</span> <span class="o">|</span> <span class="s1">&#39;movie&#39;</span><span class="p">;</span>
+</span></span></code></pre></div><p>하지만 keyof를 사용하면 MovieCharacter 인터페이스를 변경하더라도 타입이 자동으로 반영되어 코드의 유지보수가 더 쉬워집니다.</p>
+<h4 id="응용-예제">
+  응용 예제
+  <a class="heading-link" href="#%ec%9d%91%ec%9a%a9-%ec%98%88%ec%a0%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">PizzaMenu</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">starter</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">pizza</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">beverage</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">dessert</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">simpleMenu</span>: <span class="kt">PizzaMenu</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">starter</span><span class="o">:</span> <span class="s1">&#39;샐러드&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">pizza</span><span class="o">:</span> <span class="s1">&#39;페퍼로니&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">beverage</span><span class="o">:</span> <span class="s1">&#39;콜라&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">dessert</span><span class="o">:</span> <span class="s1">&#39;바닐라 아이스크림&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">adjustMenu</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">menu</span>: <span class="kt">PizzaMenu</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">menuEntry</span>: <span class="kt">keyof</span> <span class="nx">PizzaMenu</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">change</span>: <span class="kt">string</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">menu</span><span class="p">[</span><span class="nx">menuEntry</span><span class="p">]</span> <span class="o">=</span> <span class="nx">change</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 👍 올바른 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">adjustMenu</span><span class="p">(</span><span class="nx">simpleMenu</span><span class="p">,</span> <span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;하와이안 피자&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">adjustMenu</span><span class="p">(</span><span class="nx">simpleMenu</span><span class="p">,</span> <span class="s1">&#39;beverage&#39;</span><span class="p">,</span> <span class="s1">&#39;맥주&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 👎 잘못된 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">adjustMenu</span><span class="p">(</span><span class="nx">simpleMenu</span><span class="p">,</span> <span class="s1">&#39;coffee&#39;</span><span class="p">,</span> <span class="s1">&#39;아메리카노&#39;</span><span class="p">);</span>
+</span></span></code></pre></div><p>위의 예제에서 adjustMenu 함수는 메뉴를 조정할 수 있도록 구현되었습니다. keyof를 사용함으로써 인터페이스 변경 시 함수가 자동으로 변화를 반영하며 타입 안정성이 유지됩니다.</p>
+<h2 id="typeof-키워드">
+  Typeof 키워드
+  <a class="heading-link" href="#typeof-%ed%82%a4%ec%9b%8c%eb%93%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>typeof 키워드는 변수의 타입을 추출하여 사용할 수 있도록 해줍니다. 이는 특히 함수의 반환 타입을 기반으로 새로운 타입을 생성할 때 유용합니다.</p>
+<h4 id="간단한-예제">
+  간단한 예제
+  <a class="heading-link" href="#%ea%b0%84%eb%8b%a8%ed%95%9c-%ec%98%88%ec%a0%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">firstname</span> <span class="o">=</span> <span class="s1">&#39;프로도&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">name</span>: <span class="kt">typeof</span> <span class="nx">firstname</span><span class="p">;</span> <span class="c1">// name은 &#39;string&#39; 타입
+</span></span></span></code></pre></div><p>단순한 예제에서는 효과가 크지 않지만, 더 복잡한 코드에서는 강력한 도구가 됩니다. 아래는 ReturnType과 결합하여 함수의 반환 타입을 추출하는 예제입니다.</p>
+<h4 id="응용-예제-1">
+  응용 예제
+  <a class="heading-link" href="#%ec%9d%91%ec%9a%a9-%ec%98%88%ec%a0%9c-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">getCharacter() {</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">firstname</span><span class="o">:</span> <span class="s1">&#39;프로도&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;배긴스&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">Character</span> <span class="o">=</span> <span class="nx">ReturnType</span><span class="p">&lt;</span><span class="nt">typeof</span> <span class="na">getCharacter</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* Character 타입은 아래와 같습니다:
+</span></span></span><span class="line"><span class="cl"><span class="cm">{
+</span></span></span><span class="line"><span class="cl"><span class="cm">  firstname: string;
+</span></span></span><span class="line"><span class="cl"><span class="cm">  name: string;
+</span></span></span><span class="line"><span class="cl"><span class="cm">}
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span></code></pre></div><p>위 코드에서는 getCharacter 함수의 반환 타입을 기반으로 Character 타입을 생성합니다. 함수의 반환 타입이 변경되면 Character 타입도 자동으로 갱신됩니다. 이는 리팩토링과 코드 유지보수의 부담을 크게 줄여줍니다.</p>
+<h2 id="조건부-타입-conditional-types">
+  조건부 타입 (Conditional Types)
+  <a class="heading-link" href="#%ec%a1%b0%ea%b1%b4%eb%b6%80-%ed%83%80%ec%9e%85-conditional-types">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>조건부 타입은 JavaScript의 삼항 연산자와 유사한 개념으로, 조건에 따라 다른 타입을 반환합니다. 이는 TypeScript에서 더욱 강력하고 유연한 타입 시스템을 지원합니다.</p>
+<h4 id="기본-문법">
+  기본 문법
+  <a class="heading-link" href="#%ea%b8%b0%eb%b3%b8-%eb%ac%b8%eb%b2%95">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>T extends 조건 ? 참일 때 타입 : 거짓일 때 타입;</p>
+<h4 id="활용-예제">
+  활용 예제
+  <a class="heading-link" href="#%ed%99%9c%ec%9a%a9-%ec%98%88%ec%a0%9c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">StringId</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">id</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">NumberId</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">id</span>: <span class="kt">number</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">Id</span><span class="p">&lt;</span><span class="nt">T</span><span class="p">&gt;</span> <span class="o">=</span> <span class="nx">T</span> <span class="kr">extends</span> <span class="kt">string</span> <span class="o">?</span> <span class="nx">StringId</span> : <span class="kt">NumberId</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">idOne</span>: <span class="kt">Id</span><span class="p">&lt;</span><span class="nt">string</span><span class="p">&gt;;</span> <span class="c1">// StringId 타입
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">idTwo</span>: <span class="kt">Id</span><span class="p">&lt;</span><span class="nt">number</span><span class="p">&gt;;</span> <span class="c1">// NumberId 타입
+</span></span></span></code></pre></div><p>위 예제에서는 Id라는 조건부 타입을 정의했습니다. 만약 T가 string 타입으로 확장 가능하다면, 반환 타입은 StringId이고, 그렇지 않으면 NumberId 타입이 됩니다.</p>
+<p>조건부 타입은 타입에서 더욱 정교한 제어와 타입 기반 로직을 구현할 수 있도록 도와줍니다.</p>
+<h2 id="명령어-유형">
+  명령어 유형
+  <a class="heading-link" href="#%eb%aa%85%eb%a0%b9%ec%96%b4-%ec%9c%a0%ed%98%95">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>유틸리티 타입은 일반적인 타입 변환을 용이하게 하기 위한 도구입니다. TypeScript는 많은 유틸리티 타입을 제공합니다. 이 블로그 포스트에서 전부를 다루기에는 너무 많습니다. 아래에는 제가 가장 자주 사용하는 유틸리티 타입 몇 가지를 선택적으로 소개합니다. 공식 TypeScript 문서는 모든 유틸리티 타입 목록을 잘 제공하고 있습니다.</p>
+<h3 id="partial">
+  Partial
+  <a class="heading-link" href="#partial">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>The Partial utility type를 사용하면 모든 속성이 선택 사항인 새로운 인터페이스로 인터페이스를 변환할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">MovieCharacter</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">firstname</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">movie</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">registerCharacter</span><span class="p">(</span><span class="nx">character</span>: <span class="kt">Partial</span><span class="p">&lt;</span><span class="nt">MovieCharacter</span><span class="p">&gt;)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 👍 올바른 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">registerCharacter</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">firstname</span><span class="o">:</span> <span class="s1">&#39;Frodo&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 👎 잘못된 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">registerCharacter</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">firstname</span><span class="o">:</span> <span class="s1">&#39;Frodo&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Baggins&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>MovieCharacter는 firstname, name, movie가 필요합니다. 그러나 registerPerson 함수의 시그니처는 Partial 유틸리티를 사용하여 firstname, name, movie를 선택적으로 가진 새 타입을 생성합니다.</p>
+<h3 id="required">
+  Required
+  <a class="heading-link" href="#required">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Required는 Partial의 반대 역할을 합니다. 선택적 속성을 가진 기존 인터페이스를 받아 모든 속성이 필수인 타입으로 변환합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">MovieCharacter</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">firstname?</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name?</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">movie?</span>: <span class="kt">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">hireActor</span><span class="p">(</span><span class="nx">character</span>: <span class="kt">Required</span><span class="p">&lt;</span><span class="nt">MovieCharacter</span><span class="p">&gt;)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 👍 올바른 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">hireActor</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">firstname</span><span class="o">:</span> <span class="s1">&#39;Frodo&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Baggins&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">movie</span><span class="o">:</span> <span class="s1">&#39;The Lord of the Rings&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 👎 잘못된 사용 예시
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">hireActor</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">firstname</span><span class="o">:</span> <span class="s1">&#39;Frodo&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Baggins&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>이 예제에서는 MovieCharacter의 속성이 선택 사항이었습니다. Required를 사용하여 모든 속성이 필수인 타입으로 변환하였습니다. 따라서 firstname, name 및 movie 속성을 포함하는 객체만 허용됩니다.</p>
+<h3 id="extract">
+  Extract
+  <a class="heading-link" href="#extract">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Extract는 타입의 정보를 추출할 수 있도록 해줍니다. Extract는 두 개의 매개변수를 받으며, 첫 번째는 인터페이스이고 두 번째는 추출해야 할 타입입니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">MovieCharacters</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">  <span class="o">|</span> <span class="s1">&#39;Harry Potter&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">|</span> <span class="s1">&#39;Tom Riddle&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">|</span> <span class="p">{</span> <span class="nx">firstname</span>: <span class="kt">string</span><span class="p">;</span> <span class="nx">name</span>: <span class="kt">string</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">hpCharacters</span> <span class="o">=</span> <span class="nx">Extract</span><span class="p">&lt;</span><span class="nt">MovieCharacters</span><span class="err">,</span> <span class="na">string</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// hpCharacters = &#39;Harry Potter&#39; | &#39;Tom Riddle&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">hpCharacters</span> <span class="o">=</span> <span class="nx">Extract</span><span class="p">&lt;</span><span class="nt">MovieCharacters</span><span class="err">,</span> <span class="p">{</span> <span class="na">firstname</span><span class="err">:</span> <span class="na">string</span> <span class="p">}&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// hpCharacters = {firstname: string; name: string };
+</span></span></span></code></pre></div><p>Extract&lt;MovieCharacters, string&gt;는 문자열로 구성된 유니언 타입 hpCharacters를 생성합니다. 반면 Extract&lt;MovieCharacters, {firstname: string}&gt;는 firstname: string 타입을 포함하는 모든 객체 타입을 추출합니다.</p>
+<h3 id="exclude">
+  Exclude
+  <a class="heading-link" href="#exclude">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Exclude는 추출의 반대 역할을 합니다. 즉, 타입을 제외하여 새 타입을 생성할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">MovieCharacters</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">  <span class="o">|</span> <span class="s1">&#39;Harry Potter&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">|</span> <span class="s1">&#39;Tom Riddle&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">|</span> <span class="p">{</span> <span class="nx">firstname</span>: <span class="kt">string</span><span class="p">;</span> <span class="nx">name</span>: <span class="kt">string</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">hpCharacters</span> <span class="o">=</span> <span class="nx">Exclude</span><span class="p">&lt;</span><span class="nt">MovieCharacters</span><span class="err">,</span> <span class="na">string</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// equal to type hpCharacters = {firstname: string; name: string };
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">hpCharacters</span> <span class="o">=</span> <span class="nx">Exclude</span><span class="p">&lt;</span><span class="nt">MovieCharacters</span><span class="err">,</span> <span class="p">{</span> <span class="na">firstname</span><span class="err">:</span> <span class="na">string</span> <span class="p">}&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// equal to type hpCharacters = &#39;Harry Potter&#39; | &#39;Tom Riddle&#39;;
+</span></span></span></code></pre></div><p>먼저, 모든 문자열을 제외하는 새로운 타입을 생성합니다. 그 다음, firstname: string을 포함하는 모든 객체 타입을 제외하는 타입을 생성합니다.</p>
+<h3 id="infer-type">
+  Infer type
+  <a class="heading-link" href="#infer-type">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>infer는 새 유형(type)을 생성할 수 있게 해줍니다. 이는 Javascript에서 var, let 또는 const 키워드를 사용하여 변수를 생성하는 것과 유사합니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">flattenArrayType</span><span class="p">&lt;</span><span class="nt">T</span><span class="p">&gt;</span> <span class="o">=</span> <span class="nx">T</span> <span class="kr">extends</span> <span class="nb">Array</span><span class="p">&lt;</span><span class="nt">infer</span> <span class="na">ArrayType</span><span class="p">&gt;</span> <span class="o">?</span> <span class="nx">ArrayType</span> : <span class="kt">T</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nx">flattenArrayType</span><span class="p">&lt;</span><span class="nt">string</span><span class="err">[]</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// foo = string;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nx">flattenArrayType</span><span class="p">&lt;</span><span class="nt">number</span><span class="err">[]</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// foo = number;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nx">flattenArrayType</span><span class="p">&lt;</span><span class="nt">number</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// foo = number;
+</span></span></span></code></pre></div><p><code>T</code>는 <code>Array&lt;infer ArrayType&gt;</code>을 확장합니다. 이는 <code>T</code>가 배열(Array)을 확장하는지 확인하는 것입니다. 더욱이, 우리는 infer 키워드를 사용하여 배열 타입을 얻습니다. 이는 마치 변수를 사용해 타입을 저장하는 것과 같습니다.그런 다음, 조건부 타입을 사용하여 T가 배열을 확장하면 ArrayType을 반환합니다. 그렇지 않으면 T를 반환합니다.</p>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2025
+     News reporter 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.js"></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
