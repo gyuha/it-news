@@ -1,0 +1,481 @@
+
+
+<!DOCTYPE html>
+<html lang="ko" itemscope itemtype="http://schema.org/WebPage">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8193&amp;path=livereload" data-no-instant defer></script>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>PostgreSQL Replication과 Connection Pooling 구현하기 - </title>
+
+  <meta name="description" content="이번 글에서는 Docker Compose를 사용하여 PostgreSQL Replication 환경을 구축하고, PgCat을 통한 Connection Pooling을 구현하는 방법을 알아보겠습니다.">
+  <meta name="author" content="Gyuha"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "It news",
+    
+    "url": "http:\/\/localhost:8193\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/localhost:8193\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/localhost:8193\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/localhost:8193\/posts\/2025\/2025-01-17_postgresql-replication\/",
+          "name": "Postgre SQL replication과 connection pooling 구현하기"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Gyuha"
+  },
+  "headline": "PostgreSQL Replication과 Connection Pooling 구현하기",
+  "description" : "이번 글에서는 Docker Compose를 사용하여 PostgreSQL Replication 환경을 구축하고, PgCat을 통한 Connection Pooling을 구현하는 방법을 알아보겠습니다.\n",
+  "inLanguage" : "ko",
+  "wordCount":  293 ,
+  "datePublished" : "2025-01-17T19:41:48\u002b09:00",
+  "dateModified" : "2025-01-17T19:41:48\u002b09:00",
+  "image" : "http:\/\/localhost:8193\/img\/icon.png",
+  "keywords" : [ "docker, postgresql" ],
+  "mainEntityOfPage" : "http:\/\/localhost:8193\/posts\/2025\/2025-01-17_postgresql-replication\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/localhost:8193\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/localhost:8193\/img\/icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="PostgreSQL Replication과 Connection Pooling 구현하기" />
+<meta property="og:description" content="이번 글에서는 Docker Compose를 사용하여 PostgreSQL Replication 환경을 구축하고, PgCat을 통한 Connection Pooling을 구현하는 방법을 알아보겠습니다.">
+<meta property="og:image" content="http://localhost:8193/img/icon.png" />
+<meta property="og:url" content="http://localhost:8193/posts/2025/2025-01-17_postgresql-replication/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="It news" />
+
+  <meta name="twitter:title" content="PostgreSQL Replication과 Connection Pooling 구현하기" />
+  <meta name="twitter:description" content="이번 글에서는 Docker Compose를 사용하여 PostgreSQL Replication 환경을 구축하고, PgCat을 통한 Connection Pooling을 구현하는 방법을 알아보겠습니다.">
+  <meta name="twitter:image" content="http://localhost:8193/img/icon.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='http://localhost:8193/img/favicon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.134.3">
+  <link rel="alternate" href="http://localhost:8193/index.xml" type="application/rss+xml" title="It news"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" integrity="sha384-h/hnnw1Bi4nbpD6kE7nYfCXzovi622sY5WBxww8ARKwpdLj5kUWjRuyiXaD1U2JT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="http://localhost:8193/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://localhost:8193/css/highlight.min.css" /><link rel="stylesheet" href="http://localhost:8193/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">네비게이션 토글</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://localhost:8193/">It news</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="It news" href="http://localhost:8193/">
+            <img class="avatar-img" src="http://localhost:8193/img/icon.png" alt="It news" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>PostgreSQL Replication과 Connection Pooling 구현하기</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>이번 글에서는 Docker Compose를 사용하여 PostgreSQL Replication 환경을 구축하고, PgCat을 통한 Connection Pooling을 구현하는 방법을 알아보겠습니다.</p>
+<h2 id="1-프로젝트-구조">1. 프로젝트 구조</h2>
+<p>프로젝트는 다음과 같은 파일들로 구성되어 있습니다:</p>
+<ul>
+<li>docker-compose.yml: 컨테이너 구성 정의</li>
+<li>.env: 환경 변수 설정</li>
+<li>config/pgcat.simple.toml: PgCat 설정 파일</li>
+</ul>
+<h2 id="2-환경-변수-설정-env">2. 환경 변수 설정 (.env)</h2>
+<p>환경 변수를 통해 데이터베이스 접속 정보와 포트 설정을 관리합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-env" data-lang="env"><span class="line"><span class="cl"><span class="c1"># PostgreSQL 기본 설정</span>
+</span></span><span class="line"><span class="cl"><span class="nv">POSTGRESQL_USERNAME</span><span class="o">=</span>postgres
+</span></span><span class="line"><span class="cl"><span class="nv">POSTGRESQL_DATABASE</span><span class="o">=</span>postgres
+</span></span><span class="line"><span class="cl"><span class="nv">POSTGRESQL_PASSWORD</span><span class="o">=</span>mysecretpassword
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 복제 설정</span>
+</span></span><span class="line"><span class="cl"><span class="nv">POSTGRESQL_REPLICATION_USER</span><span class="o">=</span>repl_user
+</span></span><span class="line"><span class="cl"><span class="nv">POSTGRESQL_REPLICATION_PASSWORD</span><span class="o">=</span>repl_password
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 포트 설정</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PGCAT_PORT</span><span class="o">=</span><span class="m">6432</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PG1_PORT</span><span class="o">=</span><span class="m">5433</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PG2_PORT</span><span class="o">=</span><span class="m">5434</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PG3_PORT</span><span class="o">=</span><span class="m">5435</span>
+</span></span></code></pre></div><h2 id="3-postgresql-replication-구성">3. PostgreSQL Replication 구성</h2>
+<h3 id="master-노드-pg1">Master 노드 (pg1)</h3>
+<ul>
+<li>Primary 데이터베이스 서버로 동작</li>
+<li>읽기/쓰기 작업 모두 수행</li>
+<li>복제 모드: master</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">POSTGRESQL_REPLICATION_MODE</span><span class="p">:</span><span class="w"> </span><span class="l">master</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">POSTGRESQL_REPLICATION_USER</span><span class="p">:</span><span class="w"> </span><span class="l">${POSTGRESQL_REPLICATION_USER}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">POSTGRESQL_REPLICATION_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">${POSTGRESQL_REPLICATION_PASSWORD}</span><span class="w">
+</span></span></span></code></pre></div><h3 id="replica-노드-pg2-pg3">Replica 노드 (pg2, pg3)</h3>
+<ul>
+<li>Secondary 데이터베이스 서버로 동작</li>
+<li>읽기 전용 작업 수행</li>
+<li>복제 모드: slave</li>
+<li>Master 노드의 데이터를 실시간으로 복제</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">POSTGRESQL_REPLICATION_MODE</span><span class="p">:</span><span class="w"> </span><span class="l">slave</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">POSTGRESQL_MASTER_HOST</span><span class="p">:</span><span class="w"> </span><span class="l">pg1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">POSTGRESQL_MASTER_PORT_NUMBER</span><span class="p">:</span><span class="w"> </span><span class="m">5432</span><span class="w">
+</span></span></span></code></pre></div><h2 id="4-pgcat을-통한-connection-pooling">4. PgCat을 통한 Connection Pooling</h2>
+<p>PgCat은 PostgreSQL용 고성능 커넥션 풀러로, 다음과 같은 기능을 제공합니다:</p>
+<h3 id="주요-설정">주요 설정</h3>
+<ul>
+<li>Transaction 단위의 커넥션 풀링</li>
+<li>읽기/쓰기 쿼리 분리</li>
+<li>로드 밸런싱</li>
+<li>상태 모니터링 (Prometheus)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">pools</span><span class="p">.</span><span class="nx">postgres</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pool_mode</span> <span class="p">=</span> <span class="s2">&#34;transaction&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">query_parser_enabled</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="nx">query_parser_read_write_splitting</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span></code></pre></div><h3 id="서버-구성">서버 구성</h3>
+<ul>
+<li>Primary (pg1): 쓰기 작업 처리</li>
+<li>Replica (pg2, pg3): 읽기 작업 처리</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">servers</span> <span class="p">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span> <span class="s2">&#34;pg1&#34;</span><span class="p">,</span> <span class="mi">5432</span><span class="p">,</span> <span class="s2">&#34;primary&#34;</span> <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span> <span class="s2">&#34;pg2&#34;</span><span class="p">,</span> <span class="mi">5432</span><span class="p">,</span> <span class="s2">&#34;replica&#34;</span> <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span> <span class="s2">&#34;pg3&#34;</span><span class="p">,</span> <span class="mi">5432</span><span class="p">,</span> <span class="s2">&#34;replica&#34;</span> <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><h2 id="5-시스템-아키텍처">5. 시스템 아키텍처</h2>
+<p><img src="/img/2025/2025-01-17/pgcat.excalidraw.png" alt="pgcat"></p>
+<ul>
+<li>클라이언트는 PgCat(6432)로 연결</li>
+<li>PgCat이 쿼리 유형에 따라 적절한 서버로 라우팅</li>
+<li>쓰기 쿼리 → Primary (pg1)</li>
+<li>읽기 쿼리 → Replica (pg2, pg3)</li>
+</ul>
+<h2 id="6-장점">6. 장점</h2>
+<ol>
+<li>
+<p><strong>고가용성</strong></p>
+<ul>
+<li>Master 노드 장애 시에도 Replica를 통한 읽기 작업 가능</li>
+<li>데이터 복제를 통한 데이터 안정성 확보</li>
+</ul>
+</li>
+<li>
+<p><strong>성능 최적화</strong></p>
+<ul>
+<li>읽기/쓰기 작업 분리로 부하 분산</li>
+<li>Connection Pooling을 통한 데이터베이스 연결 효율화</li>
+</ul>
+</li>
+<li>
+<p><strong>확장성</strong></p>
+<ul>
+<li>필요에 따라 Replica 노드 추가 가능</li>
+<li>트래픽 증가에 유연하게 대응</li>
+</ul>
+</li>
+</ol>
+<h2 id="마치며">마치며</h2>
+<p>이러한 구성을 통해 안정적이고 확장 가능한 PostgreSQL 환경을 구축할 수 있습니다. 실제 운영 환경에서는 모니터링과 백업 전략도 함께 고려해야 합니다.</p>
+<h2 id="참고">참고</h2>
+<ul>
+<li><a href="https://github.com/gyuha/postgres_replica">구현 소스</a></li>
+<li><a href="https://www.postgresql.org/docs/current/warm-standby.html">PostgreSQL Replication Documentation</a></li>
+<li><a href="https://github.com/postgresml/pgcat">PgCat GitHub Repository</a></li>
+<li><a href="https://docs.docker.com/compose/">Docker Compose Documentation</a></li>
+<li><a href="https://hub.docker.com/r/bitnami/postgresql">Bitnami PostgreSQL Docker Image</a></li>
+</ul>
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="http://localhost:8193/tags/docker/">docker</a>&nbsp;
+            
+              
+              <a href="http://localhost:8193/tags/postgresql/">postgresql</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">더 보면 좋을 글들</h4>
+                  <ul>
+                
+                
+                    <li><a href="/posts/2024/2024-12-27_docker-image-optimization/">Docker 이미지 최적화: 더 빠른 배포를 위한 크기 줄이기</a></li>
+                
+                    <li><a href="/posts/2024/2024-10-21_jenkins-docker-compose/">Jenkins Docker Compose 설정 가이드</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://localhost:8193/posts/2025/2025-01-08_script-type-speculationrules/" data-toggle="tooltip" data-placement="top" title="Speculation Rules 사이트 로딩 속도 개선하기">&larr; 이전 글</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://localhost:8193/posts/2025/2025-01-20_vscode-extention-pack/" data-toggle="tooltip" data-placement="top" title="Visual Studio Code 확장 팩 만들기">다음 글 &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="it-news.gyuha.com">Gyuha</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2025
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://localhost:8193/">It news</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.134.3</a> 을 사용함 &nbsp;&bull;&nbsp; <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> 를 개조한 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 테마
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="http://localhost:8193/js/main.js"></script>
+<script src="http://localhost:8193/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://localhost:8193/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

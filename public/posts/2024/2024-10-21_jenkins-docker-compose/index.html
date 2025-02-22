@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html lang="ko" itemscope itemtype="http://schema.org/WebPage">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8193&amp;path=livereload" data-no-instant defer></script>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Jenkins Docker Compose 설정 가이드 - </title>
+
+  <meta name="description" content="Jenkins는 소프트웨어 개발에서 지속적 통합 및 배포(CI/CD)를 위한 강력한 도구입니다. Docker Compose를 사용하여 Jenkins를 설정하면 환경 구성이 간편해지고 일관성 있는 배포가 가능해집니다.">
+  <meta name="author" content="Gyuha"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "It news",
+    
+    "url": "http:\/\/localhost:8193\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/localhost:8193\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/localhost:8193\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/localhost:8193\/posts\/2024\/2024-10-21_jenkins-docker-compose\/",
+          "name": "Jenkins docker compose 설정 가이드"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Gyuha"
+  },
+  "headline": "Jenkins Docker Compose 설정 가이드",
+  "description" : "Jenkins는 소프트웨어 개발에서 지속적 통합 및 배포(CI\/CD)를 위한 강력한 도구입니다. Docker Compose를 사용하여 Jenkins를 설정하면 환경 구성이 간편해지고 일관성 있는 배포가 가능해집니다.\n",
+  "inLanguage" : "ko",
+  "wordCount":  438 ,
+  "datePublished" : "2024-10-21T20:13:39\u002b09:00",
+  "dateModified" : "2024-10-21T20:13:39\u002b09:00",
+  "image" : "http:\/\/localhost:8193\/img\/icon.png",
+  "keywords" : [ "jenkins, docker, docker compose, ci\/cd" ],
+  "mainEntityOfPage" : "http:\/\/localhost:8193\/posts\/2024\/2024-10-21_jenkins-docker-compose\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/localhost:8193\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/localhost:8193\/img\/icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Jenkins Docker Compose 설정 가이드" />
+<meta property="og:description" content="Jenkins는 소프트웨어 개발에서 지속적 통합 및 배포(CI/CD)를 위한 강력한 도구입니다. Docker Compose를 사용하여 Jenkins를 설정하면 환경 구성이 간편해지고 일관성 있는 배포가 가능해집니다.">
+<meta property="og:image" content="http://localhost:8193/img/icon.png" />
+<meta property="og:url" content="http://localhost:8193/posts/2024/2024-10-21_jenkins-docker-compose/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="It news" />
+
+  <meta name="twitter:title" content="Jenkins Docker Compose 설정 가이드" />
+  <meta name="twitter:description" content="Jenkins는 소프트웨어 개발에서 지속적 통합 및 배포(CI/CD)를 위한 강력한 도구입니다. Docker Compose를 사용하여 Jenkins를 설정하면 환경 구성이 간편해지고 일관성 있는 배포가 가능해집니다.">
+  <meta name="twitter:image" content="http://localhost:8193/img/icon.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='http://localhost:8193/img/favicon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.134.3">
+  <link rel="alternate" href="http://localhost:8193/index.xml" type="application/rss+xml" title="It news"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" integrity="sha384-h/hnnw1Bi4nbpD6kE7nYfCXzovi622sY5WBxww8ARKwpdLj5kUWjRuyiXaD1U2JT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="http://localhost:8193/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://localhost:8193/css/highlight.min.css" /><link rel="stylesheet" href="http://localhost:8193/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">네비게이션 토글</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://localhost:8193/">It news</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="It news" href="http://localhost:8193/">
+            <img class="avatar-img" src="http://localhost:8193/img/icon.png" alt="It news" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>Jenkins Docker Compose 설정 가이드</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Jenkins는 소프트웨어 개발에서 지속적 통합 및 배포(CI/CD)를 위한 강력한 도구입니다. Docker Compose를 사용하여 Jenkins를 설정하면 환경 구성이 간편해지고 일관성 있는 배포가 가능해집니다.</p>
+<p>이 가이드에서는 Docker Compose를 사용하여 Jenkins를 설정하는 방법을 단계별로 설명하겠습니다.</p>
+<h2 id="1-docker-composeyml-파일-생성">1. docker-compose.yml 파일 생성</h2>
+<p>먼저, 프로젝트 디렉토리에 <code>docker-compose.yml</code> 파일을 생성합니다. 이 파일은 Docker Compose가 컨테이너를 어떻게 구성하고 실행할지 정의합니다.</p>
+<h2 id="2-docker-composeyml-내용-작성">2. docker-compose.yml 내용 작성</h2>
+<p>다음은 Jenkins를 Docker Compose로 실행하기 위한 기본적인 <code>docker-compose.yml</code> 파일의 내용입니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">jenkins</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">jenkins/jenkins:lts</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">8080</span><span class="p">:</span><span class="m">8080</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">50000</span><span class="p">:</span><span class="m">50000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">jenkins</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./jenkins_home:/var/jenkins_home</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/var/run/docker.sock:/var/run/docker.sock</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span></code></pre></div><p>이 설정은 Jenkins의 기본적인 실행 환경을 제공합니다. 각 설정의 의미와 중요성에 대해 자세히 살펴보겠습니다.</p>
+<h2 id="3-설정-설명">3. 설정 설명</h2>
+<h3 id="image-jenkinsjenkinslts">image: jenkins/jenkins:lts</h3>
+<p>이 설정은 공식 Jenkins LTS (Long Term Support) 이미지를 사용하도록 지정합니다. LTS 버전은 안정성이 검증된 버전으로, 프로덕션 환경에 적합합니다.</p>
+<h3 id="privileged-true-및-user-root">privileged: true 및 user: root</h3>
+<p>이 설정들은 Jenkins 컨테이너에 필요한 권한을 부여합니다. 특히 Docker 명령어를 실행하거나 특정 시스템 리소스에 접근해야 할 때 필요합니다. 단, 보안상의 이유로 프로덕션 환경에서는 최소한의 권한만 부여하는 것이 좋습니다.</p>
+<h3 id="ports">ports</h3>
+<ul>
+<li><code>8080:8080</code>: Jenkins 웹 인터페이스에 접근하기 위한 포트입니다. 호스트의 8080 포트를 컨테이너의 8080 포트에 매핑합니다.</li>
+<li><code>50000:50000</code>: Jenkins 슬레이브 에이전트와의 통신을 위한 포트입니다. 분산 빌드 환경을 구성할 때 사용됩니다.</li>
+</ul>
+<h3 id="volumes">volumes</h3>
+<ul>
+<li><code>./jenkins_home:/var/jenkins_home</code>: Jenkins의 데이터와 설정을 호스트 시스템의 <code>./jenkins_home</code> 디렉토리에 저장합니다. 이를 통해 컨테이너가 삭제되더라도 데이터를 유지할 수 있습니다.</li>
+<li><code>/var/run/docker.sock:/var/run/docker.sock</code>: 호스트의 Docker 소켓을 Jenkins 컨테이너와 공유합니다. 이를 통해 Jenkins 내에서 Docker 명령어를 실행할 수 있게 됩니다.</li>
+</ul>
+<h3 id="restart-always">restart: always</h3>
+<p>시스템이 재시작되거나 Docker 데몬이 재시작될 때 Jenkins 컨테이너를 자동으로 시작하도록 설정합니다.</p>
+<h2 id="4-jenkins-실행">4. Jenkins 실행</h2>
+<p>설정이 완료되면, <code>docker-compose.yml</code> 파일이 있는 디렉토리에서 다음 명령어를 실행하여 Jenkins를 시작합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up -d
+</span></span></code></pre></div><p><code>-d</code> 옵션은 백그라운드에서 컨테이너를 실행하도록 합니다.</p>
+<h2 id="5-jenkins-초기-설정">5. Jenkins 초기 설정</h2>
+<p>Jenkins를 처음 실행하면 초기 설정 과정이 필요합니다. 다음 단계를 따라 설정을 완료하세요:</p>
+<ol>
+<li>웹 브라우저에서 <code>http://localhost:8080</code>으로 접속합니다.</li>
+<li>초기 관리자 비밀번호를 입력해야 합니다. 이 비밀번호는 다음 명령어로 확인할 수 있습니다:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+</span></span></code></pre></div></li>
+<li>화면의 지시에 따라 추천 플러그인을 설치하고 관리자 계정을 생성합니다.</li>
+</ol>
+<h2 id="주의사항-및-추가-고려사항">주의사항 및 추가 고려사항</h2>
+<ol>
+<li>
+<p><strong>보안</strong>: 위의 설정은 기본적인 것이며, 프로덕션 환경에서는 추가적인 보안 설정이 필요합니다. 예를 들어, Jenkins에 대한 접근을 제한하거나, HTTPS를 설정하는 것이 좋습니다.</p>
+</li>
+<li>
+<p><strong>버전 관리</strong>: Jenkins 버전을 업데이트할 때는 <code>docker-compose.yml</code>의 이미지 태그를 변경해야 할 수 있습니다. 정기적으로 버전을 확인하고 업데이트하는 것이 좋습니다.</p>
+</li>
+<li>
+<p><strong>리소스 관리</strong>: Jenkins는 많은 시스템 리소스를 사용할 수 있습니다. 필요에 따라 컨테이너의 리소스 제한을 설정하는 것이 좋습니다.</p>
+</li>
+<li>
+<p><strong>백업</strong>: <code>jenkins_home</code> 디렉토리를 정기적으로 백업하여 데이터 손실에 대비하세요.</p>
+</li>
+<li>
+<p><strong>플러그인 관리</strong>: 필요한 플러그인만 설치하고 관리하세요. 불필요한 플러그인은 시스템 성능에 영향을 줄 수 있습니다.</p>
+</li>
+<li>
+<p><strong>네트워크 설정</strong>: 다른 서비스와 연동해야 하는 경우, Docker 네트워크를 적절히 구성하세요.</p>
+</li>
+</ol>
+<p>Jenkins를 Docker Compose로 설정하면 환경 관리가 훨씬 쉬워지고, 개발 팀 전체가 일관된 환경에서 작업할 수 있습니다. 이 가이드를 따라 설정하고, 필요에 따라 추가적인 커스터마이징을 진행하시기 바랍니다. Jenkins를 통한 효율적인 CI/CD 파이프라인 구축으로 개발 프로세스를 한층 개선할 수 있을 것입니다.</p>
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="http://localhost:8193/tags/jenkins/">jenkins</a>&nbsp;
+            
+              
+              <a href="http://localhost:8193/tags/docker/">docker</a>&nbsp;
+            
+              
+              <a href="http://localhost:8193/tags/docker-compose/">docker compose</a>&nbsp;
+            
+              
+              <a href="http://localhost:8193/tags/ci/cd/">ci/cd</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">더 보면 좋을 글들</h4>
+                  <ul>
+                
+                
+                    <li><a href="/posts/2025/2025-01-17_postgresql-replication/">PostgreSQL Replication과 Connection Pooling 구현하기</a></li>
+                
+                    <li><a href="/posts/2024/2024-12-27_docker-image-optimization/">Docker 이미지 최적화: 더 빠른 배포를 위한 크기 줄이기</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://localhost:8193/posts/2024/2024-10-01-python-ruff-settings-in-vscode/" data-toggle="tooltip" data-placement="top" title="VSCode에서 Ruff로 Python 코드 품질 관리하기">&larr; 이전 글</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://localhost:8193/posts/2024/2024-11-26_pandas-dataframe/" data-toggle="tooltip" data-placement="top" title="Pandas의 DataFrame에서 자주 사용되는 유용한 메서드들 소개">다음 글 &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="it-news.gyuha.com">Gyuha</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2025
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://localhost:8193/">It news</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.134.3</a> 을 사용함 &nbsp;&bull;&nbsp; <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> 를 개조한 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 테마
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="http://localhost:8193/js/main.js"></script>
+<script src="http://localhost:8193/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://localhost:8193/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

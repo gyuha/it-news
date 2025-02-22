@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<html lang="ko" itemscope itemtype="http://schema.org/WebPage">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8193&amp;path=livereload" data-no-instant defer></script>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Visual Studio Code 확장 팩 만들기 - </title>
+
+  <meta name="description" content="Visual Studio Code(VSCode)는 다양한 확장을 지원하여 생산성을 높이고 개발 워크플로우를 간소화하는 강력한 코드 편집기입니다. 함께 잘 작동하는 확장 모음을 가지고 있다면, 확장 팩을 만들어 사용자가 이를 쉽게 설치하고 관리할 수 있도록 할 수 있습니다.">
+  <meta name="author" content="Gyuha"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "It news",
+    
+    "url": "http:\/\/localhost:8193\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/localhost:8193\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/localhost:8193\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/localhost:8193\/posts\/2025\/2025-01-20_vscode-extention-pack\/",
+          "name": "Visual studio code 확장 팩 만들기"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Gyuha"
+  },
+  "headline": "Visual Studio Code 확장 팩 만들기",
+  "description" : "Visual Studio Code(VSCode)는 다양한 확장을 지원하여 생산성을 높이고 개발 워크플로우를 간소화하는 강력한 코드 편집기입니다. 함께 잘 작동하는 확장 모음을 가지고 있다면, 확장 팩을 만들어 사용자가 이를 쉽게 설치하고 관리할 수 있도록 할 수 있습니다.\n",
+  "inLanguage" : "ko",
+  "wordCount":  373 ,
+  "datePublished" : "2025-01-20T13:38:56\u002b09:00",
+  "dateModified" : "2025-01-20T13:38:56\u002b09:00",
+  "image" : "http:\/\/localhost:8193\/img\/icon.png",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "http:\/\/localhost:8193\/posts\/2025\/2025-01-20_vscode-extention-pack\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/localhost:8193\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/localhost:8193\/img\/icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Visual Studio Code 확장 팩 만들기" />
+<meta property="og:description" content="Visual Studio Code(VSCode)는 다양한 확장을 지원하여 생산성을 높이고 개발 워크플로우를 간소화하는 강력한 코드 편집기입니다. 함께 잘 작동하는 확장 모음을 가지고 있다면, 확장 팩을 만들어 사용자가 이를 쉽게 설치하고 관리할 수 있도록 할 수 있습니다.">
+<meta property="og:image" content="http://localhost:8193/img/icon.png" />
+<meta property="og:url" content="http://localhost:8193/posts/2025/2025-01-20_vscode-extention-pack/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="It news" />
+
+  <meta name="twitter:title" content="Visual Studio Code 확장 팩 만들기" />
+  <meta name="twitter:description" content="Visual Studio Code(VSCode)는 다양한 확장을 지원하여 생산성을 높이고 개발 워크플로우를 간소화하는 강력한 코드 편집기입니다. 함께 잘 작동하는 확장 모음을 가지고 있다면, 확장 팩을 만들어 사용자가 이를 쉽게 설치하고 관리할 수 있도록 할 수 있습니다.">
+  <meta name="twitter:image" content="http://localhost:8193/img/icon.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='http://localhost:8193/img/favicon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.134.3">
+  <link rel="alternate" href="http://localhost:8193/index.xml" type="application/rss+xml" title="It news"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" integrity="sha384-h/hnnw1Bi4nbpD6kE7nYfCXzovi622sY5WBxww8ARKwpdLj5kUWjRuyiXaD1U2JT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="http://localhost:8193/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://localhost:8193/css/highlight.min.css" /><link rel="stylesheet" href="http://localhost:8193/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">네비게이션 토글</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://localhost:8193/">It news</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="It news" href="http://localhost:8193/">
+            <img class="avatar-img" src="http://localhost:8193/img/icon.png" alt="It news" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>Visual Studio Code 확장 팩 만들기</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Visual Studio Code(VSCode)는 다양한 확장을 지원하여 생산성을 높이고 개발 워크플로우를 간소화하는 강력한 코드 편집기입니다. 함께 잘 작동하는 확장 모음을 가지고 있다면, 확장 팩을 만들어 사용자가 이를 쉽게 설치하고 관리할 수 있도록 할 수 있습니다.</p>
+<p>이번 포스트에서는 자신만의 VSCode 확장 팩을 만드는 방법을 단계별로 안내하겠습니다.</p>
+<h2 id="1단계-환경-설정">1단계: 환경 설정</h2>
+<p>확장 팩을 만들기 전에 다음 도구들이 설치되어 있는지 확인하세요:</p>
+<ol>
+<li>
+<p><strong>Node.js</strong>: <a href="https://nodejs.org/">nodejs.org</a>에서 Node.js를 다운로드하고 설치합니다.</p>
+</li>
+<li>
+<p><strong>Visual Studio Code</strong>: 아직 설치하지 않았다면 <a href="https://code.visualstudio.com/">code.visualstudio.com</a>에서 VSCode를 다운로드합니다.</p>
+</li>
+<li>
+<p><strong>Yeoman 및 VSCode 확장 생성기</strong>: 터미널을 열고 다음 명령어를 실행하여 Yeoman과 생성기를 설치합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install -g yo generator-code
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="2단계-확장-팩-생성">2단계: 확장 팩 생성</h2>
+<p>환경 설정이 완료되었으니 이제 확장 팩을 생성해 보겠습니다:</p>
+<ol>
+<li>
+<p><strong>새 확장 팩 생성</strong>: 터미널에서 다음 명령어를 실행합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yo code
+</span></span></code></pre></div><ul>
+<li>프롬프트가 나타나면 <strong>New Extension Pack</strong>을 선택합니다.</li>
+<li>확장 팩의 이름, 설명 및 기타 세부 정보를 입력합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>package.json</code> 수정</strong>: 생성기가 완료되면 확장 팩의 디렉토리로 이동하여 <code>package.json</code> 파일을 엽니다. 다음과 유사한 구조를 볼 수 있습니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;your-extension-pack-name&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;displayName&#34;</span><span class="p">:</span> <span class="s2">&#34;Your Extension Pack&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;A pack of useful extensions.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;publisher&#34;</span><span class="p">:</span> <span class="s2">&#34;your-publisher-name&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;engines&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;vscode&#34;</span><span class="p">:</span> <span class="s2">&#34;^1.60.0&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;extensionPack&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;publisher.extension1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;publisher.extension2&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;activationEvents&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;./out/extension.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;contributes&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;commands&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;configuration&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ul>
+<li><strong><code>extensionPack</code></strong>: 여기에서 포함할 확장의 식별자를 추가합니다. 형식은 <code>publisher.extensionName</code>입니다.</li>
+</ul>
+</li>
+</ol>
+<h2 id="3단계-확장-팩-테스트">3단계: 확장 팩 테스트</h2>
+<ol>
+<li><strong>VSCode에서 확장 팩 열기</strong>: VSCode에서 확장 팩이 포함된 폴더를 엽니다.</li>
+<li><strong>확장 실행</strong>: <code>F5</code> 키를 눌러 확장 팩이 로드된 새로운 VSCode 창을 시작합니다. 이를 통해 기능을 테스트하고 포함된 모든 확장이 인식되는지 확인할 수 있습니다.</li>
+</ol>
+<h2 id="4단계-확장-팩-게시">4단계: 확장 팩 게시</h2>
+<p>확장 팩에 만족하면 이제 게시할 차례입니다:</p>
+<ol>
+<li>
+<p><strong>VSCE 도구 설치</strong>: 아직 설치하지 않았다면, 확장을 패키징하고 게시하기 위한 VSCE 도구를 설치합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install -g @vscode/vsce
+</span></span></code></pre></div></li>
+<li>
+<p><strong>확장 패키지 만들기</strong>: 터미널에서 다음 명령어를 실행합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vsce package
+</span></span></code></pre></div><p>이 명령어는 디렉토리에 <code>.vsix</code> 파일을 생성합니다.</p>
+</li>
+<li>
+<p><strong>확장 팩 게시</strong>: 확장 팩을 게시하려면 <a href="https://marketplace.visualstudio.com/">Visual Studio Marketplace</a>에서 게시자 계정을 생성해야 합니다. 게시 지침에 따라 다음 명령어를 사용하여 확장 팩을 게시합니다:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vsce publish
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="추가-팁">추가 팁</h2>
+<ul>
+<li><strong>문서화</strong>: 확장 팩에 대한 명확한 문서를 제공하여 설치 및 사용 방법을 안내합니다.</li>
+<li><strong>버전 관리</strong>: <code>package.json</code> 파일에서 버전 관리를 통해 업데이트를 효과적으로 관리합니다.</li>
+<li><strong>테스트</strong>: 모든 포함된 확장이 예상대로 작동하는지 철저히 테스트합니다.</li>
+</ul>
+<h2 id="결론">결론</h2>
+<p>VSCode 확장 팩을 만드는 것은 관련 확장을 묶어 사용자 경험을 향상시키는 좋은 방법입니다. 이 포스트에서 설명한 단계를 따르면 쉽게 자신만의 확장 팩을 생성하고 테스트하며 게시할 수 있습니다. 즐거운 코딩 되세요!</p>
+<hr>
+<p>필요에 따라 내용을 수정하거나 개인적인 통찰을 추가하여 더 매력적으로 만들 수 있습니다! 추가적인 도움이 필요하시면 언제든지 말씀해 주세요.</p>
+
+        
+
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://localhost:8193/posts/2025/2025-01-17_postgresql-replication/" data-toggle="tooltip" data-placement="top" title="PostgreSQL Replication과 Connection Pooling 구현하기">&larr; 이전 글</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="it-news.gyuha.com">Gyuha</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2025
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://localhost:8193/">It news</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.134.3</a> 을 사용함 &nbsp;&bull;&nbsp; <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> 를 개조한 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 테마
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="http://localhost:8193/js/main.js"></script>
+<script src="http://localhost:8193/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://localhost:8193/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
